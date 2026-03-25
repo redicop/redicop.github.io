@@ -4,43 +4,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resources | REDICOP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">REDICOP</a><div class="nav-links"><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html">News Feed</a><a href="events.html">Events</a><a href="resources.html" class="active">Resources</a><a href="signup.html" class="nav-cta">Join Community</a></div></div></nav>
 
-  <div class="page-header"><div class="container"><h1>Resources</h1><p>Guidelines, datasets, tools, and publications developed by the REDICOP community for remote sensing in disaster management.</p></div></div>
-
-  <section class="events-section"><div class="container">
-    <div class="section-header"><h2>Guidelines &amp; Standards</h2><p style="color:var(--text-secondary);margin-top:.5rem">Community-developed best practices for using remote sensing in emergency management.</p></div>
-    <div class="resource-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:1.5rem">
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">SAR Data Guidelines for Post-Disaster Assessment</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Standardized procedures for acquiring, processing, and interpreting Synthetic Aperture Radar data during flood, hurricane, and earthquake response.</p></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">Satellite Imagery Tasking Workflow</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Step-by-step guide for emergency managers to request and receive commercial and government satellite imagery during active disasters.</p></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">Damage Assessment with Optical Imagery</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Guidelines for using high-resolution optical satellite and aerial imagery to conduct rapid building damage assessments.</p></div>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand"><div class="brand-icon">RC</div><div class="brand-text">REDI<span>COP</span></div></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="data-sources.html">Data Sources</a>
+      <a href="news.html">News Feed</a>
+      <a href="events.html">Events</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a href="signup.html" class="nav-cta">Join Community &rarr;</a>
     </div>
-  </div></section>
+  </nav>
 
-  <section class="events-section"><div class="container">
-    <div class="section-header"><h2>Datasets &amp; Tools</h2><p style="color:var(--text-secondary);margin-top:.5rem">Open data sources and software tools commonly used by the REDICOP community.</p></div>
-    <div class="resource-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:1.5rem">
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">nltGIS.ai - AI-Native Spatial Intelligence</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">AI-powered geospatial platform for querying authoritative datasets on hazards, climate risk, population, and infrastructure.</p><a href="https://nltgis.ai" target="_blank" style="color:var(--accent-primary);text-decoration:none;margin-top:.5rem;display:inline-block">Visit nltGIS.ai &rarr;</a></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">NOAA Satellite Imagery Archive</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Access to GOES, JPSS, and other NOAA satellite systems for weather monitoring and disaster assessment.</p><a href="https://www.nesdis.noaa.gov/" target="_blank" style="color:var(--accent-primary);text-decoration:none;margin-top:.5rem;display:inline-block">NOAA NESDIS &rarr;</a></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">Copernicus Emergency Management Service</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">EU satellite-based rapid mapping service providing damage grading and situation maps within hours of a disaster.</p><a href="https://emergency.copernicus.eu/" target="_blank" style="color:var(--accent-primary);text-decoration:none;margin-top:.5rem;display:inline-block">Visit EMS &rarr;</a></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">Sentinel Hub</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Cloud-based platform providing access to Sentinel-1 SAR and Sentinel-2 optical imagery with on-the-fly processing.</p><a href="https://www.sentinel-hub.com/" target="_blank" style="color:var(--accent-primary);text-decoration:none;margin-top:.5rem;display:inline-block">View API Docs &rarr;</a></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">REDICOP GitHub Repository</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Community-contributed scripts, notebooks, and tools for remote sensing analysis in disaster management contexts.</p><a href="https://github.com/redicop" target="_blank" style="color:var(--accent-primary);text-decoration:none;margin-top:.5rem;display:inline-block">GitHub &rarr;</a></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">USGS Earth Explorer</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Access Landsat, aerial photography, and other USGS datasets for pre- and post-disaster land cover analysis.</p><a href="https://earthexplorer.usgs.gov/" target="_blank" style="color:var(--accent-primary);text-decoration:none;margin-top:.5rem;display:inline-block">Earth Explorer &rarr;</a></div>
+  <div class="page-header">
+    <div class="container">
+      <div class="section-label">Knowledge Base</div>
+      <h1>Resources</h1>
+      <p>Guidelines, datasets, tools, and publications developed by the REDICOP community for remote sensing in disaster management.</p>
     </div>
-  </div></section>
+  </div>
 
-  <section class="events-section" style="padding-bottom:100px"><div class="container">
-    <div class="section-header"><h2>Publications &amp; Presentations</h2></div>
-    <div class="resource-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:1.5rem">
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">Remote Sensing for Flood Damage Assessment: State of the Art</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Comprehensive review of current methodologies, satellite systems, and AI techniques used for flood damage mapping.</p></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">REDICOP 2024 Year in Review</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Summary of community activities, key findings, and strategic priorities discussed throughout the 2024 meeting series.</p></div>
-      <div class="event-card" style="flex-direction:column;align-items:flex-start"><h3 style="font-size:1.1rem;margin-bottom:.5rem">Commercial Imagery Providers Comparison 2025</h3><p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6">Side-by-side comparison of resolution, revisit time, tasking costs, and disaster response capabilities of major providers.</p></div>
+  <section class="container" style="padding-top:0">
+    <div class="section-header"><div class="section-label">Guides</div><h2 class="section-title">Guidelines &amp; Standards</h2><p class="section-desc">Community-developed best practices for using remote sensing in emergency management.</p></div>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <div class="rc-type">Standard</div>
+        <h3>SAR Data Guidelines for Post-Disaster Assessment</h3>
+        <p>Standardized procedures for acquiring, processing, and interpreting Synthetic Aperture Radar data during flood, hurricane, and earthquake response.</p>
+        <a href="#" class="rc-link">View Document &rarr;</a>
+      </div>
+      <div class="resource-card">
+        <div class="rc-type">Workflow</div>
+        <h3>Satellite Imagery Tasking Workflow</h3>
+        <p>Step-by-step guide for emergency managers to request and receive commercial and government satellite imagery during active disasters.</p>
+        <a href="#" class="rc-link">View Document &rarr;</a>
+      </div>
+      <div class="resource-card">
+        <div class="rc-type">Best Practice</div>
+        <h3>Damage Assessment with Optical Imagery</h3>
+        <p>Guidelines for using high-resolution optical satellite and aerial imagery to conduct rapid building damage assessments.</p>
+        <a href="#" class="rc-link">View Document &rarr;</a>
+      </div>
     </div>
-  </div></section>
+  </section>
 
-  <footer class="footer"><div class="footer-content"><div class="footer-section"><h3>REDICOP</h3><p>Remote Sensing in Disasters Community of Practice</p></div><div class="footer-section"><h3>Quick Links</h3><ul><li><a href="data-sources.html">Data Sources</a></li><li><a href="events.html">Events</a></li><li><a href="resources.html">Resources</a></li><li><a href="signup.html">Join Community</a></li></ul></div><div class="footer-section"><h3>Connect</h3><ul><li><a href="https://github.com/redicop" target="_blank">GitHub</a></li><li><a href="mailto:info@redicop.org">Email Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025 REDICOP. Built for the remote sensing community.</p></div></footer>
+  <section class="resources-section">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Data</div><h2 class="section-title">Datasets &amp; Tools</h2><p class="section-desc">Open data sources and software tools commonly used by the REDICOP community.</p></div>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="rc-type">Platform</div>
+          <h3>nltGIS.ai &mdash; AI-Native Spatial Intelligence</h3>
+          <p>AI-powered geospatial platform for querying authoritative datasets on hazards, climate risk, population, and infrastructure.</p>
+          <a href="https://nltgis.ai" target="_blank" class="rc-link">Visit nltGIS.ai &rarr;</a>
+        </div>
+        <div class="resource-card">
+          <div class="rc-type">Dataset</div>
+          <h3>NOAA Satellite Imagery Archive</h3>
+          <p>Access to GOES, JPSS, and other NOAA satellite systems for weather monitoring and disaster assessment.</p>
+          <a href="https://www.nesdis.noaa.gov/" target="_blank" class="rc-link">NOAA NESDIS &rarr;</a>
+        </div>
+        <div class="resource-card">
+          <div class="rc-type">Tool</div>
+          <h3>Copernicus Emergency Management Service</h3>
+          <p>EU's satellite-based rapid mapping service providing damage grading and situation maps within hours of a disaster.</p>
+          <a href="https://emergency.copernicus.eu/" target="_blank" class="rc-link">Visit EMS &rarr;</a>
+        </div>
+        <div class="resource-card">
+          <div class="rc-type">API</div>
+          <h3>Sentinel Hub</h3>
+          <p>Cloud-based platform providing access to Sentinel-1 SAR and Sentinel-2 optical imagery with on-the-fly processing capabilities.</p>
+          <a href="https://www.sentinel-hub.com/" target="_blank" class="rc-link">View API Docs &rarr;</a>
+        </div>
+        <div class="resource-card">
+          <div class="rc-type">Open Source</div>
+          <h3>REDICOP GitHub Repository</h3>
+          <p>Community-contributed scripts, notebooks, and tools for remote sensing analysis in disaster management contexts.</p>
+          <a href="https://github.com/redicop" target="_blank" class="rc-link">GitHub &rarr;</a>
+        </div>
+        <div class="resource-card">
+          <div class="rc-type">Dataset</div>
+          <h3>USGS Earth Explorer</h3>
+          <p>Access Landsat, aerial photography, and other USGS datasets for pre- and post-disaster land cover analysis.</p>
+          <a href="https://earthexplorer.usgs.gov/" target="_blank" class="rc-link">Earth Explorer &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:100px">
+    <div class="section-header"><div class="section-label">Reading</div><h2 class="section-title">Publications &amp; Presentations</h2></div>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <div class="rc-type">Publication</div>
+        <h3>Remote Sensing for Flood Damage Assessment: State of the Art</h3>
+        <p>Comprehensive review of current methodologies, satellite systems, and AI techniques used for flood damage mapping.</p>
+        <a href="#" class="rc-link">Read Paper &rarr;</a>
+      </div>
+      <div class="resource-card">
+        <div class="rc-type">Presentation</div>
+        <h3>REDICOP 2024 Year in Review</h3>
+        <p>Summary of community activities, key findings, and strategic priorities discussed throughout the 2024 meeting series.</p>
+        <a href="#" class="rc-link">View Slides &rarr;</a>
+      </div>
+      <div class="resource-card">
+        <div class="rc-type">Report</div>
+        <h3>Commercial Imagery Providers Comparison 2025</h3>
+        <p>Side-by-side comparison of resolution, revisit time, tasking costs, and disaster response capabilities of major providers.</p>
+        <a href="#" class="rc-link">Read Report &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="brand-text">REDI<span>COP</span></div><p>Remote Sensing in Disasters Community of Practice. Your gateway to disaster remote sensing data and community collaboration.</p></div>
+        <div class="footer-col"><h4>Community</h4><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html">News Feed</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html">Join Community</a></div>
+        <div class="footer-col"><h4>Co-Organizers</h4><a href="https://newlighttechnologies.com/" target="_blank">New Light Technologies</a><a href="https://www.ll.mit.edu/" target="_blank">MIT Lincoln Laboratory</a><a href="https://nltgis.ai" target="_blank">nltGIS.ai</a></div>
+        <div class="footer-col"><h4>Connect</h4><a href="https://github.com/redicop" target="_blank">GitHub</a><a href="mailto:info@redicop.org">Email Us</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span><div class="footer-badges"><span class="footer-badge">Open Community</span></div></div>
+    </div>
+  </footer>
+
 </body>
 </html>
