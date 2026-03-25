@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Community | REDICOP</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .signup-hero{text-align:center;padding:4rem 2rem 2rem}
+    .signup-hero h1{font-size:2.5rem;margin-bottom:.5rem}
+    .signup-hero p{color:var(--text-secondary);max-width:700px;margin:0 auto;font-size:1.05rem;line-height:1.7}
+    .signup-content{max-width:900px;margin:0 auto 3rem;padding:0 2rem}
+    .signup-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+    .signup-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;padding:2rem;text-align:center;transition:all .3s ease}
+    .signup-card:hover{transform:translateY(-4px);border-color:var(--accent-primary)}
+    .signup-card .card-icon{font-size:2.5rem;margin-bottom:1rem}
+    .signup-card h3{font-size:1.25rem;margin-bottom:.75rem;color:var(--text-primary)}
+    .signup-card p{color:var(--text-secondary);font-size:.92rem;line-height:1.6;margin-bottom:1.25rem}
+    .signup-card .btn{display:inline-block;background:var(--accent-primary);color:#fff;padding:.7rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .3s ease}
+    .signup-card .btn:hover{background:var(--accent-secondary);transform:scale(1.03)}
+    .signup-card .btn.outline{background:transparent;border:2px solid var(--accent-primary);color:var(--accent-primary)}
+    .signup-card .btn.outline:hover{background:var(--accent-primary);color:#fff}
+    .benefits-section{max-width:900px;margin:0 auto 3rem;padding:0 2rem}
+    .benefits-section h2{font-size:1.75rem;margin-bottom:1.5rem;text-align:center}
+    .benefits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem}
+    .benefit-item{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:10px;padding:1.5rem;transition:border-color .3s}
+    .benefit-item:hover{border-color:var(--accent-primary)}
+    .benefit-item h4{color:var(--text-primary);margin-bottom:.5rem;font-size:1.05rem}
+    .benefit-item p{color:var(--text-secondary);font-size:.88rem;line-height:1.6}
+    .getting-started{max-width:900px;margin:0 auto 4rem;padding:0 2rem}
+    .getting-started h2{font-size:1.75rem;margin-bottom:1.5rem;text-align:center}
+    .steps{display:grid;gap:1.25rem}
+    .step{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:10px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:border-color .3s}
+    .step:hover{border-color:var(--accent-primary)}
+    .step-num{background:var(--accent-primary);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:1rem}
+    .step-text h4{color:var(--text-primary);margin-bottom:.3rem;font-size:1rem}
+    .step-text p{color:var(--text-secondary);font-size:.88rem;line-height:1.5}
+    .step-text a{color:var(--accent-primary);text-decoration:none}
+    .step-text a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">REDICOP</a><div class="nav-links"><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html">News Feed</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html" class="nav-cta active">Join Community</a></div></div></nav>
+
+  <section class="signup-hero">
+    <h1>Join the REDICOP Community</h1>
+    <p>Connect with remote sensing professionals, disaster response experts, and researchers. REDICOP uses GitHub as its community platform to foster open collaboration, share resources, and advance the use of remote sensing in disaster management.</p>
+  </section>
+
+  <div class="signup-content">
+    <div class="signup-cards">
+      <div class="signup-card">
+        <div class="card-icon">&#127760;</div>
+        <h3>Watch the Repository</h3>
+        <p>Get notified about all updates, new data sources, events, and community discussions by watching our GitHub repository.</p>
+        <a href="https://github.com/redicop/redicop.github.io/subscription" target="_blank" class="btn">Watch on GitHub</a>
+      </div>
+      <div class="signup-card">
+        <div class="card-icon">&#128172;</div>
+        <h3>Join Discussions</h3>
+        <p>Ask questions, share knowledge, propose new data sources, and connect with community members through GitHub Discussions.</p>
+        <a href="https://github.com/redicop/redicop.github.io/discussions" target="_blank" class="btn">Open Discussions</a>
+      </div>
+      <div class="signup-card">
+        <div class="card-icon">&#128736;</div>
+        <h3>Contribute Content</h3>
+        <p>Submit pull requests to add new data sources, improve documentation, suggest events, or enhance the website directly.</p>
+        <a href="https://github.com/redicop/redicop.github.io/fork" target="_blank" class="btn outline">Fork &amp; Contribute</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="benefits-section">
+    <h2>Why Join REDICOP?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <h4>Access Curated Data Sources</h4>
+        <p>Browse our comprehensive index of 75+ satellite imagery, SAR, LiDAR, and remote sensing datasets from federal agencies, national labs, and global providers.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Stay Updated</h4>
+        <p>Receive notifications on new satellite launches, mission data releases, technology developments, and community events in the remote sensing space.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Network with Experts</h4>
+        <p>Connect with professionals from NASA, USGS, NOAA, FEMA, national laboratories, universities, and the private sector working in disaster remote sensing.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Shape the Community</h4>
+        <p>Propose new features, suggest data sources, organize events, and help build the go-to resource for remote sensing in disaster management.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Open Source &amp; Transparent</h4>
+        <p>Everything is open on GitHub. See all changes, participate in decisions, and help maintain a community-driven, transparent platform for all.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Free &amp; Accessible</h4>
+        <p>No paywalls, no gatekeeping. REDICOP is a free community of practice open to anyone interested in remote sensing for disaster applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="getting-started">
+    <h2>Getting Started</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>Create a GitHub Account</h4>
+          <p>If you don't have one yet, <a href="https://github.com/signup" target="_blank">sign up for a free GitHub account</a>. This will be your identity in the REDICOP community.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Watch the Repository</h4>
+          <p>Visit the <a href="https://github.com/redicop/redicop.github.io" target="_blank">REDICOP repository</a> and click the "Watch" button to get notified of all updates and new content.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Introduce Yourself</h4>
+          <p>Head to <a href="https://github.com/redicop/redicop.github.io/discussions" target="_blank">GitHub Discussions</a> and create a post introducing yourself, your background, and your interests in remote sensing for disaster response.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <h4>Explore &amp; Contribute</h4>
+          <p>Browse the <a href="data-sources.html">Data Sources</a>, read the <a href="news.html">News Feed</a>, and check <a href="events.html">upcoming Events</a>. Found something missing? Submit an issue or pull request!</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <h4>Spread the Word</h4>
+          <p>Share REDICOP with colleagues who work in remote sensing, GIS, emergency management, or disaster science. The more people involved, the stronger our community becomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-content"><div class="footer-section"><h3>REDICOP</h3><p>Remote Sensing in Disasters Community of Practice</p></div><div class="footer-section"><h3>Quick Links</h3><ul><li><a href="data-sources.html">Data Sources</a></li><li><a href="events.html">Events</a></li><li><a href="resources.html">Resources</a></li><li><a href="signup.html">Join Community</a></li></ul></div><div class="footer-section"><h3>Connect</h3><ul><li><a href="https://github.com/redicop" target="_blank">GitHub</a></li><li><a href="mailto:info@redicop.org">Email Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025 REDICOP. Built for the remote sensing community.</p></div></footer>
+</body>
+</html>
