@@ -3,85 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REDICOP July 2025 Meeting</title>
+    <title>July 2025 Meeting | REDICOP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div style="height:6px;background:#0077B6;"></div>
 
-    <section class="meeting-hero">
-        <div class="meeting-hero-image">
-            <img src="https://images.unsplash.com/photo-1509803874385-db7c23652552?w=800&q=80" alt="Hurricane winds and palm trees">
+<nav class="site-nav">
+    <a href="index.html" class="nav-brand">
+        <div class="brand-icon">RC</div>
+        <div class="brand-text">REDI<span>COP</span></div>
+    </a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="resources.html">Resources</a>
+        <a href="july-2025.html" class="nav-cta active">July 2025 Meeting &rarr;</a>
+    </div>
+</nav>
+
+<!-- ── MEETING HERO ── -->
+<section class="meeting-hero">
+    <div class="container">
+        <div class="meeting-info">
+            <div class="meeting-tag"><span class="pulse"></span> Registration Open</div>
+            <h1>Preparing for the <span class="highlight">2025</span> Hurricane Season</h1>
+            <ul class="meeting-details">
+                <li><span class="detail-icon">&#128197;</span> <strong>July 10th, 2025</strong></li>
+                <li><span class="detail-icon">&#128338;</span> 1:00 &ndash; 2:00 PM ET</li>
+                <li><span class="detail-icon">&#128187;</span> Virtual Meeting (Zoom)</li>
+                <li><span class="detail-icon">&#127758;</span> Open to all &mdash; Federal, State, Local, NGO, Academia, Private Sector</li>
+            </ul>
+            <div class="meeting-actions">
+                <a href="#register" class="btn btn-primary">Register Now &rarr;</a>
+                <a href="#" class="btn btn-outline">Add to Calendar</a>
+            </div>
         </div>
-        <div class="meeting-hero-content">
-            <div class="meeting-logos">
-                <div class="logo-item">
-                    <strong>NLT</strong> New Light Technologies
-                </div>
-                <div class="logo-divider"></div>
-                <div class="logo-item">
-                    <strong>LINCOLN LABORATORY</strong>
-                    <span>Massachusetts Institute of Technology</span>
+        <div class="meeting-visual">
+            <img src="https://images.unsplash.com/photo-1509803874385-db7c23652552?w=800&q=80" alt="Hurricane preparedness">
+        </div>
+    </div>
+</section>
+
+<!-- ── ABOUT SECTION ── -->
+<section class="about-section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-label">About REDICOP</div>
+                <h2>What is REDICOP?</h2>
+                <p><strong style="color:var(--accent-bright)">REDICOP</strong> is a collaboration between <a href="https://newlighttechnologies.com/" target="_blank" class="inline-link">New Light Technologies</a> and <a href="https://www.ll.mit.edu/" target="_blank" class="inline-link">MIT Lincoln Laboratory</a> to foster innovation on the use of remote sensing in disaster response and recovery.</p>
+                <p>Our community brings together researchers, practitioners, and decision-makers to develop guidelines, standards, and workflows that enable emergency managers to effectively use remote sensing technologies and products.</p>
+            </div>
+            <div class="about-visual">
+                <div class="section-label" style="margin-bottom:24px">Co-Organizers</div>
+                <div class="partners-grid">
+                    <a href="https://newlighttechnologies.com/" target="_blank" class="partner-item">
+                        <strong>NLT</strong><span>New Light Technologies</span>
+                    </a>
+                    <a href="https://www.ll.mit.edu/" target="_blank" class="partner-item">
+                        <strong>MIT LL</strong><span>Lincoln Laboratory</span>
+                    </a>
                 </div>
             </div>
-            <h1>Preparing For The <span class="highlight">2025</span> Hurricane Season</h1>
-            <p class="event-details">
-                Please join the Remote Sensing in Disasters Community of Practice (REDICOP) on
-                <span class="date">July 10th, 2025</span> from <span class="time">1:00&#8211;2:00 PM ET</span>
-                for a discussion on <em>&#8220;Preparing for the 2025 Hurricane Season.&#8221;</em>
-                <span class="reg-open">Registration is open now!</span>
-            </p>
-            <a href="#register" class="btn-register">Register Now</a>
-            <a href="#" class="btn-calendar">Add to Calendar</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="meeting-about">
-        <h2>What is REDICOP?</h2>
-        <div class="info-box">
-            <strong>REDICOP</strong> is a collaboration between <strong>New Light Technologies</strong> and <strong>MIT Lincoln Laboratory</strong> to foster innovation on the use of remote sensing in disaster response and recovery.
+<!-- ── REGISTRATION ── -->
+<section id="register" class="reg-section">
+    <div class="container">
+        <div class="reg-grid">
+            <div class="reg-info">
+                <div class="section-label">Registration</div>
+                <h2>Join the Discussion</h2>
+                <p>Register to attend our July 2025 virtual meeting on hurricane season preparedness. The session will feature presentations on the latest remote sensing capabilities and lessons learned from recent hurricane response operations.</p>
+                <div class="info-box">
+                    <strong>Topics include:</strong> Pre-positioned satellite tasking, AI-powered damage assessment, SAR flood mapping, coordination with NWS and FEMA, and new commercial imagery sources for 2025.
+                </div>
+            </div>
+            <div class="reg-form-card">
+                <h3>Register Now</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@organization.gov">
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname">
+                    </div>
+                    <div class="form-group">
+                        <label for="org">Organization</label>
+                        <input type="text" id="org" name="org">
+                    </div>
+                    <div class="radio-group">
+                        <p>Have you previously attended a REDICOP meeting?</p>
+                        <label class="radio-option"><input type="radio" name="attended" value="yes"> Yes</label>
+                        <label class="radio-option"><input type="radio" name="attended" value="no"> No</label>
+                    </div>
+                    <div class="radio-group">
+                        <p>Join our mailing list.</p>
+                        <label class="radio-option"><input type="radio" name="mailing" value="yes"> Yes</label>
+                        <label class="radio-option"><input type="radio" name="mailing" value="no"> No</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Register &rarr;</button>
+                </form>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="register" class="registration-section">
-        <div class="registration-image">
-            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80" alt="Satellite view of hurricane">
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="brand-text">REDI<span>COP</span></div>
+                <p>Remote Sensing in Disasters Community of Practice. Advancing remote sensing for emergency management.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <div class="footer-col">
+                <h4>Organizations</h4>
+                <a href="https://newlighttechnologies.com/" target="_blank">New Light Technologies</a>
+                <a href="https://www.ll.mit.edu/" target="_blank">MIT Lincoln Laboratory</a>
+                <a href="https://nltgis.ai" target="_blank">nltGIS.ai</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="resources.html">Guidelines</a>
+                <a href="resources.html">Datasets</a>
+                <a href="https://github.com/redicop" target="_blank">GitHub</a>
+            </div>
         </div>
-        <div class="registration-form">
-            <h2>Register <span class="highlight">Now</span></h2>
-            <form>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="fname">
-                </div>
-                <div class="form-group">
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lname">
-                </div>
-                <div class="form-group">
-                    <label for="org">Organization</label>
-                    <input type="text" id="org" name="org">
-                </div>
-                <div class="radio-group">
-                    <p>Have you previously attended a REDICOP meeting?</p>
-                    <label class="radio-option"><input type="radio" name="attended" value="yes"> Yes</label>
-                    <label class="radio-option"><input type="radio" name="attended" value="no"> No</label>
-                </div>
-                <div class="radio-group">
-                    <p>Join our mailing list.</p>
-                    <label class="radio-option"><input type="radio" name="mailing" value="yes"> Yes</label>
-                    <label class="radio-option"><input type="radio" name="mailing" value="no"> No</label>
-                </div>
-                <button type="submit" class="btn-form-register">Register Now</button>
-            </form>
-            <p class="hosted-by">Hosted by <a href="https://nltmso.com" target="_blank">NLTMSO.com</a></p>
+        <div class="footer-bottom">
+            <span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span>
+            <div class="footer-badges">
+                <span class="footer-badge">Open Community</span>
+            </div>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <div class="meeting-footer-bar"></div>
 </body>
 </html>
