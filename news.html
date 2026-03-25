@@ -4,91 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News Feed | REDICOP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .news-hero{text-align:center;padding:4rem 2rem 2rem}
-    .news-hero h1{font-size:2.5rem;margin-bottom:.5rem}
-    .news-hero p{color:var(--text-secondary);max-width:700px;margin:0 auto}
-    .news-filters{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:2rem auto;max-width:900px}
-    .news-filters button{background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text-primary);padding:.5rem 1.25rem;border-radius:2rem;cursor:pointer;transition:all .3s ease;font-size:.9rem}
-    .news-filters button:hover,.news-filters button.active{background:var(--accent-primary);border-color:var(--accent-primary);color:#fff}
-    .news-grid{max-width:1100px;margin:0 auto 3rem;padding:0 2rem;display:grid;gap:1.5rem}
-    .news-item{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;padding:1.75rem;transition:transform .3s ease,border-color .3s ease}
-    .news-item:hover{transform:translateY(-3px);border-color:var(--accent-primary)}
+    .news-filters{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin:0 auto 3rem;max-width:900px;padding:0 1rem}
+    .news-filters button{background:var(--bg-card);border:1px solid var(--border-glass);color:var(--text-secondary);padding:.5rem 1.25rem;border-radius:2rem;cursor:pointer;transition:all var(--transition);font-size:.9rem;font-family:var(--font-sans)}
+    .news-filters button:hover,.news-filters button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    .news-grid-list{max-width:1100px;margin:0 auto 4rem;padding:0 2rem;display:grid;gap:1.5rem}
+    .news-item{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;transition:all var(--transition)}
+    .news-item:hover{transform:translateY(-3px);border-color:rgba(59,130,246,.15);box-shadow:var(--shadow-glow)}
     .news-meta{display:flex;gap:1rem;align-items:center;margin-bottom:.75rem;flex-wrap:wrap}
-    .news-date{color:var(--accent-primary);font-size:.85rem;font-weight:600}
-    .news-tag{background:rgba(99,102,241,.15);color:var(--accent-primary);padding:.2rem .65rem;border-radius:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase}
-    .news-tag.sar{background:rgba(16,185,129,.15);color:#10b981}
-    .news-tag.lidar{background:rgba(245,158,11,.15);color:#f59e0b}
-    .news-tag.satellite{background:rgba(59,130,246,.15);color:#3b82f6}
-    .news-tag.launch{background:rgba(239,68,68,.15);color:#ef4444}
+    .news-date-tag{color:var(--accent-bright);font-size:.85rem;font-weight:600}
+    .news-tag{padding:.2rem .65rem;border-radius:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+    .news-tag.sar{background:rgba(16,185,129,.15);color:var(--accent-emerald)}
+    .news-tag.lidar{background:rgba(245,158,11,.15);color:var(--warning)}
+    .news-tag.satellite{background:rgba(59,130,246,.15);color:var(--accent-bright)}
+    .news-tag.launch{background:rgba(239,68,68,.15);color:var(--danger)}
     .news-tag.disaster{background:rgba(168,85,247,.15);color:#a855f7}
-    .news-tag.policy{background:rgba(20,184,166,.15);color:#14b8a6}
-    .news-item h3{font-size:1.2rem;margin-bottom:.5rem;color:var(--text-primary)}
-    .news-item h3 a{color:inherit;text-decoration:none}
-    .news-item h3 a:hover{color:var(--accent-primary)}
-    .news-item p{color:var(--text-secondary);font-size:.95rem;line-height:1.6}
-    .news-source{margin-top:.75rem;font-size:.8rem;color:var(--text-secondary)}
-    .news-source a{color:var(--accent-primary);text-decoration:none}
-    .feeds-section{max-width:1100px;margin:0 auto 4rem;padding:0 2rem}
-    .feeds-section h2{font-size:1.75rem;margin-bottom:1.5rem;text-align:center}
+    .news-tag.policy{background:rgba(20,184,166,.15);color:var(--accent-teal)}
+    .news-item h3{font-size:1.2rem;margin-bottom:.5rem;color:var(--text-heading)}
+    .news-item h3 a{color:inherit;text-decoration:none;transition:color var(--transition)}
+    .news-item h3 a:hover{color:var(--accent-bright)}
+    .news-item p{color:var(--text-secondary);font-size:.95rem;line-height:1.7}
+    .news-source{margin-top:.75rem;font-size:.8rem;color:var(--text-muted)}
+    .news-source a{color:var(--accent-bright);text-decoration:none}
     .feeds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
-    .feed-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:10px;padding:1.25rem;text-decoration:none;transition:all .3s ease;display:block}
-    .feed-card:hover{border-color:var(--accent-primary);transform:translateY(-2px)}
-    .feed-card h4{color:var(--text-primary);margin-bottom:.4rem;font-size:1rem}
+    .feed-card{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius);padding:1.25rem;text-decoration:none;transition:all var(--transition);display:block}
+    .feed-card:hover{border-color:rgba(59,130,246,.15);transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+    .feed-card h4{color:var(--text-heading);margin-bottom:.4rem;font-size:1rem}
     .feed-card p{color:var(--text-secondary);font-size:.85rem;line-height:1.5}
   </style>
 </head>
 <body>
-  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">REDICOP</a><div class="nav-links"><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html" class="active">News Feed</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html" class="nav-cta">Join Community</a></div></div></nav>
 
-  <section class="news-hero"><h1>Remote Sensing News</h1><p>Stay updated with the latest developments in satellite remote sensing, SAR, LiDAR, disaster response technology, and space launches.</p></section>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand"><div class="brand-icon">RC</div><div class="brand-text">REDI<span>COP</span></div></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="data-sources.html">Data Sources</a>
+      <a href="news.html" class="active">News Feed</a>
+      <a href="events.html">Events</a>
+      <a href="resources.html">Resources</a>
+      <a href="signup.html" class="nav-cta">Join Community &rarr;</a>
+    </div>
+  </nav>
 
-  <div class="news-filters"><button class="active" onclick="filterNews('all')">All News</button><button onclick="filterNews('satellite')">Satellite</button><button onclick="filterNews('sar')">SAR</button><button onclick="filterNews('lidar')">LiDAR</button><button onclick="filterNews('launch')">Launches</button><button onclick="filterNews('disaster')">Disaster</button><button onclick="filterNews('policy')">Policy</button></div>
-
-  <div class="news-grid" id="newsGrid">
-    <div class="news-item" data-category="satellite launch"><div class="news-meta"><span class="news-date">March 2026</span><span class="news-tag satellite">Satellite</span><span class="news-tag launch">Launch</span></div><h3><a href="https://www.esa.int/Applications/Observing_the_Earth" target="_blank">ESA Sentinel Expansion Continues in 2026</a></h3><p>The European Space Agency continues expanding its Copernicus Sentinel constellation with new missions planned through 2026, enhancing global environmental monitoring capabilities for climate, oceans, and land surfaces.</p><div class="news-source">Source: <a href="https://www.esa.int" target="_blank">European Space Agency</a></div></div>
-
-    <div class="news-item" data-category="satellite disaster"><div class="news-meta"><span class="news-date">March 2026</span><span class="news-tag satellite">Satellite</span><span class="news-tag disaster">Disaster</span></div><h3><a href="https://disasterscharter.org" target="_blank">International Disasters Charter Activations Surge</a></h3><p>The International Charter for Space and Major Disasters saw increased activations in early 2026, providing free satellite imagery to disaster-affected countries for flood, earthquake, and wildfire response efforts worldwide.</p><div class="news-source">Source: <a href="https://disasterscharter.org" target="_blank">International Disasters Charter</a></div></div>
-
-    <div class="news-item" data-category="sar"><div class="news-meta"><span class="news-date">February 2026</span><span class="news-tag sar">SAR</span></div><h3><a href="https://nisar.jpl.nasa.gov/" target="_blank">NASA-ISRO NISAR Mission Delivering First Data</a></h3><p>The NISAR mission has begun delivering dual-frequency L-band and S-band synthetic aperture radar data, providing unprecedented views of Earth's changing ecosystems, ice masses, and natural hazards.</p><div class="news-source">Source: <a href="https://nisar.jpl.nasa.gov/" target="_blank">NASA JPL - NISAR</a></div></div>
-
-    <div class="news-item" data-category="lidar"><div class="news-meta"><span class="news-date">February 2026</span><span class="news-tag lidar">LiDAR</span></div><h3><a href="https://gedi.umd.edu/" target="_blank">GEDI LiDAR Mission Data Fuels Forest Carbon Research</a></h3><p>NASA's GEDI continues to produce high-resolution laser ranging observations of Earth's forests and topography from the ISS, supporting critical carbon cycle and biodiversity research.</p><div class="news-source">Source: <a href="https://gedi.umd.edu/" target="_blank">University of Maryland - GEDI</a></div></div>
-
-    <div class="news-item" data-category="satellite launch"><div class="news-meta"><span class="news-date">January 2026</span><span class="news-tag satellite">Satellite</span><span class="news-tag launch">Launch</span></div><h3><a href="https://www.planet.com" target="_blank">Planet Labs Expands Daily Monitoring Constellation</a></h3><p>Planet Labs continues expanding its fleet of over 200 Earth-imaging satellites, now offering enhanced hyperspectral and thermal capabilities alongside its daily global monitoring service.</p><div class="news-source">Source: <a href="https://www.planet.com" target="_blank">Planet Labs</a></div></div>
-
-    <div class="news-item" data-category="disaster policy"><div class="news-meta"><span class="news-date">January 2026</span><span class="news-tag disaster">Disaster</span><span class="news-tag policy">Policy</span></div><h3><a href="https://www.fema.gov" target="_blank">FEMA Integrates Advanced Remote Sensing in Disaster Response</a></h3><p>FEMA has expanded its use of satellite and aerial remote sensing technologies for pre-disaster planning, real-time damage assessment, and recovery monitoring.</p><div class="news-source">Source: <a href="https://www.fema.gov" target="_blank">FEMA</a></div></div>
-
-    <div class="news-item" data-category="sar satellite"><div class="news-meta"><span class="news-date">December 2025</span><span class="news-tag sar">SAR</span><span class="news-tag satellite">Satellite</span></div><h3><a href="https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-1" target="_blank">Sentinel-1C Enhances Global SAR Coverage</a></h3><p>ESA's Sentinel-1C has reached full operational capability, restoring the two-satellite SAR constellation and ensuring continuous 6-day repeat coverage for deformation monitoring and disaster mapping.</p><div class="news-source">Source: <a href="https://sentinels.copernicus.eu" target="_blank">Copernicus Sentinels</a></div></div>
-
-    <div class="news-item" data-category="lidar satellite"><div class="news-meta"><span class="news-date">December 2025</span><span class="news-tag lidar">LiDAR</span></div><h3><a href="https://icesat-2.gsfc.nasa.gov/" target="_blank">ICESat-2 Reveals Accelerating Ice Sheet Changes</a></h3><p>NASA's ICESat-2 space-based laser altimeter continues to measure ice sheet elevation changes with centimeter precision, with recent data showing accelerating mass loss in Greenland and Antarctica.</p><div class="news-source">Source: <a href="https://icesat-2.gsfc.nasa.gov/" target="_blank">NASA ICESat-2</a></div></div>
-
-    <div class="news-item" data-category="launch"><div class="news-meta"><span class="news-date">November 2025</span><span class="news-tag launch">Launch</span></div><h3><a href="https://www.spacex.com/launches/" target="_blank">Record Year for Earth Observation Launches</a></h3><p>2025 set a new record for Earth observation satellite launches, with over 50 dedicated EO missions placed into orbit, dramatically increasing global monitoring capabilities.</p><div class="news-source">Source: <a href="https://www.spacex.com/launches/" target="_blank">SpaceX</a></div></div>
-
-    <div class="news-item" data-category="satellite disaster"><div class="news-meta"><span class="news-date">November 2025</span><span class="news-tag satellite">Satellite</span><span class="news-tag disaster">Disaster</span></div><h3><a href="https://www.maxar.com" target="_blank">Maxar Open Data Program Supports Disaster Response</a></h3><p>Maxar Technologies continues its Open Data Program, releasing high-resolution satellite imagery before and after major natural disasters for humanitarian organizations and first responders.</p><div class="news-source">Source: <a href="https://www.maxar.com" target="_blank">Maxar Technologies</a></div></div>
-
-    <div class="news-item" data-category="policy"><div class="news-meta"><span class="news-date">October 2025</span><span class="news-tag policy">Policy</span></div><h3><a href="https://www.usgs.gov/landsat-missions" target="_blank">Landsat Next Mission Advances Toward Launch</a></h3><p>The Landsat Next mission continues development with its planned constellation of three satellites carrying superspectral imagers with 26+ bands at 10-20m resolution.</p><div class="news-source">Source: <a href="https://www.usgs.gov/landsat-missions" target="_blank">USGS Landsat</a></div></div>
-
-    <div class="news-item" data-category="satellite"><div class="news-meta"><span class="news-date">October 2025</span><span class="news-tag satellite">Satellite</span></div><h3><a href="https://earthdata.nasa.gov/" target="_blank">NASA Earthdata Cloud Migration Milestone</a></h3><p>NASA's Earthdata system reached a major milestone in cloud migration, with the majority of EOSDIS data collections now accessible through cloud-optimized formats.</p><div class="news-source">Source: <a href="https://earthdata.nasa.gov/" target="_blank">NASA Earthdata</a></div></div>
-
-    <div class="news-item" data-category="sar disaster"><div class="news-meta"><span class="news-date">September 2025</span><span class="news-tag sar">SAR</span><span class="news-tag disaster">Disaster</span></div><h3><a href="https://aria.jpl.nasa.gov/" target="_blank">JPL ARIA Team Advances Rapid Disaster Mapping with InSAR</a></h3><p>NASA JPL's ARIA team continues to advance automated InSAR processing for rapid disaster damage mapping, producing damage proxy maps within hours of major earthquakes and floods.</p><div class="news-source">Source: <a href="https://aria.jpl.nasa.gov/" target="_blank">NASA JPL ARIA</a></div></div>
+  <div class="page-header">
+    <div class="container">
+      <div class="section-label">Stay Updated</div>
+      <h1>Remote Sensing News</h1>
+      <p>Latest developments in satellite remote sensing, SAR, LiDAR, disaster response technology, and space launches.</p>
+    </div>
   </div>
 
-  <section class="feeds-section"><h2>Follow These Sources</h2><div class="feeds-grid">
-    <a href="https://earthobservatory.nasa.gov/" target="_blank" class="feed-card"><h4>NASA Earth Observatory</h4><p>Daily satellite images and stories about climate, environment, and natural hazards.</p></a>
-    <a href="https://www.esa.int/Applications/Observing_the_Earth" target="_blank" class="feed-card"><h4>ESA Earth Observation</h4><p>European Space Agency Earth observation news, missions, and data updates.</p></a>
-    <a href="https://spacenews.com/section/earth-observation/" target="_blank" class="feed-card"><h4>SpaceNews - Earth Observation</h4><p>Industry news on Earth observation satellites, launches, and commercial remote sensing.</p></a>
-    <a href="https://www.satellitetoday.com" target="_blank" class="feed-card"><h4>Satellite Today</h4><p>Breaking news on satellite industry, launches, and technology developments.</p></a>
-    <a href="https://gisgeography.com/remote-sensing-earth-observation-news/" target="_blank" class="feed-card"><h4>GIS Geography</h4><p>Remote sensing tutorials, news, and comprehensive geospatial resource guides.</p></a>
-    <a href="https://disasterscharter.org/web/guest/activations" target="_blank" class="feed-card"><h4>Disasters Charter Activations</h4><p>Real-time tracking of International Charter activations for space-based disaster support.</p></a>
-    <a href="https://www.nesdis.noaa.gov/" target="_blank" class="feed-card"><h4>NOAA NESDIS</h4><p>Environmental satellite data, imagery, and operational monitoring updates.</p></a>
-    <a href="https://spaceflightnow.com/launch-schedule/" target="_blank" class="feed-card"><h4>Spaceflight Now Launch Schedule</h4><p>Comprehensive worldwide launch schedule including Earth observation missions.</p></a>
-  </div></section>
+  <div class="news-filters">
+    <button class="active" onclick="filterNews('all')">All News</button>
+    <button onclick="filterNews('satellite')">Satellite</button>
+    <button onclick="filterNews('sar')">SAR</button>
+    <button onclick="filterNews('lidar')">LiDAR</button>
+    <button onclick="filterNews('launch')">Launches</button>
+    <button onclick="filterNews('disaster')">Disaster</button>
+    <button onclick="filterNews('policy')">Policy</button>
+  </div>
 
-  <footer class="footer"><div class="footer-content"><div class="footer-section"><h3>REDICOP</h3><p>Remote Sensing in Disasters Community of Practice</p></div><div class="footer-section"><h3>Quick Links</h3><ul><li><a href="data-sources.html">Data Sources</a></li><li><a href="events.html">Events</a></li><li><a href="resources.html">Resources</a></li><li><a href="signup.html">Join Community</a></li></ul></div><div class="footer-section"><h3>Connect</h3><ul><li><a href="https://github.com/redicop" target="_blank">GitHub</a></li><li><a href="mailto:info@redicop.org">Email Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025 REDICOP. Built for the remote sensing community.</p></div></footer>
+  <div class="news-grid-list" id="newsGrid">
+    <div class="news-item" data-category="satellite launch"><div class="news-meta"><span class="news-date-tag">March 2026</span><span class="news-tag satellite">Satellite</span><span class="news-tag launch">Launch</span></div><h3><a href="https://www.esa.int/Applications/Observing_the_Earth" target="_blank">ESA Sentinel Expansion Continues in 2026</a></h3><p>The European Space Agency continues expanding its Copernicus Sentinel constellation with new missions planned through 2026, enhancing global environmental monitoring capabilities for climate, oceans, and land surfaces.</p><div class="news-source">Source: <a href="https://www.esa.int" target="_blank">European Space Agency</a></div></div>
+
+    <div class="news-item" data-category="satellite disaster"><div class="news-meta"><span class="news-date-tag">March 2026</span><span class="news-tag satellite">Satellite</span><span class="news-tag disaster">Disaster</span></div><h3><a href="https://disasterscharter.org" target="_blank">International Disasters Charter Activations Surge</a></h3><p>The International Charter for Space and Major Disasters saw increased activations in early 2026, providing free satellite imagery to disaster-affected countries for flood, earthquake, and wildfire response efforts worldwide.</p><div class="news-source">Source: <a href="https://disasterscharter.org" target="_blank">International Disasters Charter</a></div></div>
+
+    <div class="news-item" data-category="sar"><div class="news-meta"><span class="news-date-tag">February 2026</span><span class="news-tag sar">SAR</span></div><h3><a href="https://nisar.jpl.nasa.gov/" target="_blank">NASA-ISRO NISAR Mission Delivering First Data</a></h3><p>The NISAR mission has begun delivering dual-frequency L-band and S-band synthetic aperture radar data, providing unprecedented views of Earth's changing ecosystems, ice masses, and natural hazards.</p><div class="news-source">Source: <a href="https://nisar.jpl.nasa.gov/" target="_blank">NASA JPL - NISAR</a></div></div>
+
+    <div class="news-item" data-category="lidar"><div class="news-meta"><span class="news-date-tag">February 2026</span><span class="news-tag lidar">LiDAR</span></div><h3><a href="https://gedi.umd.edu/" target="_blank">GEDI LiDAR Mission Data Fuels Forest Carbon Research</a></h3><p>NASA's GEDI continues to produce high-resolution laser ranging observations of Earth's forests and topography from the ISS, supporting critical carbon cycle and biodiversity research.</p><div class="news-source">Source: <a href="https://gedi.umd.edu/" target="_blank">University of Maryland - GEDI</a></div></div>
+
+    <div class="news-item" data-category="satellite launch"><div class="news-meta"><span class="news-date-tag">January 2026</span><span class="news-tag satellite">Satellite</span><span class="news-tag launch">Launch</span></div><h3><a href="https://www.planet.com" target="_blank">Planet Labs Expands Daily Monitoring Constellation</a></h3><p>Planet Labs continues expanding its fleet of over 200 Earth-imaging satellites, now offering enhanced hyperspectral and thermal capabilities alongside its daily global monitoring service.</p><div class="news-source">Source: <a href="https://www.planet.com" target="_blank">Planet Labs</a></div></div>
+
+    <div class="news-item" data-category="disaster policy"><div class="news-meta"><span class="news-date-tag">January 2026</span><span class="news-tag disaster">Disaster</span><span class="news-tag policy">Policy</span></div><h3><a href="https://www.fema.gov" target="_blank">Federal Agencies Integrate Advanced Remote Sensing in Disaster Response</a></h3><p>Federal emergency management agencies have expanded their use of satellite and aerial remote sensing technologies for pre-disaster planning, real-time damage assessment, and recovery monitoring.</p><div class="news-source">Source: <a href="https://www.fema.gov" target="_blank">FEMA</a></div></div>
+
+    <div class="news-item" data-category="sar satellite"><div class="news-meta"><span class="news-date-tag">December 2025</span><span class="news-tag sar">SAR</span><span class="news-tag satellite">Satellite</span></div><h3><a href="https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-1" target="_blank">Sentinel-1C Enhances Global SAR Coverage</a></h3><p>ESA's Sentinel-1C has reached full operational capability, restoring the two-satellite SAR constellation and ensuring continuous 6-day repeat coverage for deformation monitoring and disaster mapping.</p><div class="news-source">Source: <a href="https://sentinels.copernicus.eu" target="_blank">Copernicus Sentinels</a></div></div>
+
+    <div class="news-item" data-category="lidar satellite"><div class="news-meta"><span class="news-date-tag">December 2025</span><span class="news-tag lidar">LiDAR</span></div><h3><a href="https://icesat-2.gsfc.nasa.gov/" target="_blank">ICESat-2 Reveals Accelerating Ice Sheet Changes</a></h3><p>NASA's ICESat-2 space-based laser altimeter continues to measure ice sheet elevation changes with centimeter precision, with recent data showing accelerating mass loss in Greenland and Antarctica.</p><div class="news-source">Source: <a href="https://icesat-2.gsfc.nasa.gov/" target="_blank">NASA ICESat-2</a></div></div>
+
+    <div class="news-item" data-category="launch"><div class="news-meta"><span class="news-date-tag">November 2025</span><span class="news-tag launch">Launch</span></div><h3><a href="https://www.spacex.com/launches/" target="_blank">Record Year for Earth Observation Launches</a></h3><p>2025 set a new record for Earth observation satellite launches, with over 50 dedicated EO missions placed into orbit, dramatically increasing global monitoring capabilities.</p><div class="news-source">Source: <a href="https://www.spacex.com/launches/" target="_blank">SpaceX</a></div></div>
+
+    <div class="news-item" data-category="satellite disaster"><div class="news-meta"><span class="news-date-tag">November 2025</span><span class="news-tag satellite">Satellite</span><span class="news-tag disaster">Disaster</span></div><h3><a href="https://www.maxar.com" target="_blank">Maxar Open Data Program Supports Disaster Response</a></h3><p>Maxar Technologies continues its Open Data Program, releasing high-resolution satellite imagery before and after major natural disasters for humanitarian organizations and first responders.</p><div class="news-source">Source: <a href="https://www.maxar.com" target="_blank">Maxar Technologies</a></div></div>
+
+    <div class="news-item" data-category="policy"><div class="news-meta"><span class="news-date-tag">October 2025</span><span class="news-tag policy">Policy</span></div><h3><a href="https://www.usgs.gov/landsat-missions" target="_blank">Landsat Next Mission Advances Toward Launch</a></h3><p>The Landsat Next mission continues development with its planned constellation of three satellites carrying superspectral imagers with 26+ bands at 10-20m resolution.</p><div class="news-source">Source: <a href="https://www.usgs.gov/landsat-missions" target="_blank">USGS Landsat</a></div></div>
+
+    <div class="news-item" data-category="satellite"><div class="news-meta"><span class="news-date-tag">October 2025</span><span class="news-tag satellite">Satellite</span></div><h3><a href="https://earthdata.nasa.gov/" target="_blank">NASA Earthdata Cloud Migration Milestone</a></h3><p>NASA's Earthdata system reached a major milestone in cloud migration, with the majority of EOSDIS data collections now accessible through cloud-optimized formats.</p><div class="news-source">Source: <a href="https://earthdata.nasa.gov/" target="_blank">NASA Earthdata</a></div></div>
+
+    <div class="news-item" data-category="sar disaster"><div class="news-meta"><span class="news-date-tag">September 2025</span><span class="news-tag sar">SAR</span><span class="news-tag disaster">Disaster</span></div><h3><a href="https://aria.jpl.nasa.gov/" target="_blank">JPL ARIA Team Advances Rapid Disaster Mapping with InSAR</a></h3><p>NASA JPL's ARIA team continues to advance automated InSAR processing for rapid disaster damage mapping, producing damage proxy maps within hours of major earthquakes and floods.</p><div class="news-source">Source: <a href="https://aria.jpl.nasa.gov/" target="_blank">NASA JPL ARIA</a></div></div>
+  </div>
+
+  <section class="container" style="padding-bottom:80px">
+    <div class="section-header"><div class="section-label">Resources</div><h2 class="section-title">Follow These Sources</h2></div>
+    <div class="feeds-grid">
+      <a href="https://earthobservatory.nasa.gov/" target="_blank" class="feed-card"><h4>NASA Earth Observatory</h4><p>Daily satellite images and stories about climate, environment, and natural hazards.</p></a>
+      <a href="https://www.esa.int/Applications/Observing_the_Earth" target="_blank" class="feed-card"><h4>ESA Earth Observation</h4><p>European Space Agency Earth observation news, missions, and data updates.</p></a>
+      <a href="https://spacenews.com/section/earth-observation/" target="_blank" class="feed-card"><h4>SpaceNews - Earth Observation</h4><p>Industry news on Earth observation satellites, launches, and commercial remote sensing.</p></a>
+      <a href="https://www.satellitetoday.com" target="_blank" class="feed-card"><h4>Satellite Today</h4><p>Breaking news on satellite industry, launches, and technology developments.</p></a>
+      <a href="https://disasterscharter.org/web/guest/activations" target="_blank" class="feed-card"><h4>Disasters Charter Activations</h4><p>Real-time tracking of International Charter activations for space-based disaster support.</p></a>
+      <a href="https://www.nesdis.noaa.gov/" target="_blank" class="feed-card"><h4>NOAA NESDIS</h4><p>Environmental satellite data, imagery, and operational monitoring updates.</p></a>
+      <a href="https://spaceflightnow.com/launch-schedule/" target="_blank" class="feed-card"><h4>Spaceflight Now Launch Schedule</h4><p>Comprehensive worldwide launch schedule including Earth observation missions.</p></a>
+      <a href="https://gisgeography.com/remote-sensing-earth-observation-news/" target="_blank" class="feed-card"><h4>GIS Geography</h4><p>Remote sensing tutorials, news, and comprehensive geospatial resource guides.</p></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="brand-text">REDI<span>COP</span></div><p>Remote Sensing in Disasters Community of Practice. Your gateway to disaster remote sensing data and community collaboration.</p></div>
+        <div class="footer-col"><h4>Community</h4><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html">News Feed</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html">Join Community</a></div>
+        <div class="footer-col"><h4>Co-Organizers</h4><a href="https://newlighttechnologies.com/" target="_blank">New Light Technologies</a><a href="https://www.ll.mit.edu/" target="_blank">MIT Lincoln Laboratory</a><a href="https://nltgis.ai" target="_blank">nltGIS.ai</a></div>
+        <div class="footer-col"><h4>Connect</h4><a href="https://github.com/redicop" target="_blank">GitHub</a><a href="mailto:info@redicop.org">Email Us</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span><div class="footer-badges"><span class="footer-badge">Open Community</span></div></div>
+    </div>
+  </footer>
 
   <script>
     function filterNews(category){var items=document.querySelectorAll('.news-item');var buttons=document.querySelectorAll('.news-filters button');buttons.forEach(function(b){b.classList.remove('active')});event.target.classList.add('active');items.forEach(function(item){if(category==='all'){item.style.display='block'}else{var cats=item.getAttribute('data-category');item.style.display=cats.includes(category)?'block':'none'}})}
   </script>
+
 </body>
 </html>
