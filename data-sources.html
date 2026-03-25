@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Sources for Remote Sensing | REDICOP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>.search-box{max-width:600px;margin:0 auto 48px;position:relative}.search-box input{width:100%;padding:16px 20px 16px 48px;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius);color:var(--text-primary);font-size:16px;font-family:var(--font-sans);outline:none;transition:border-color var(--transition)}.search-box input:focus{border-color:var(--accent)}.search-box input::placeholder{color:var(--text-muted)}.search-box::before{content:'\1F50D';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:18px}.cat-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:48px}.cat-nav a{padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid var(--border-glass);color:var(--text-secondary);transition:all var(--transition)}.cat-nav a:hover,.cat-nav a.active{background:var(--accent-glow);border-color:rgba(59,130,246,.3);color:var(--accent-bright)}.source-count{text-align:center;margin-bottom:32px;font-size:14px;color:var(--text-muted)}</style>
+</head>
+<body>
+<nav class="site-nav"><a href="index.html" class="nav-brand"><div class="brand-icon">RC</div><div class="brand-text">REDI<span>COP</span></div></a><div class="nav-links"><a href="index.html">Home</a><a href="data-sources.html" class="active">Data Sources</a><a href="news.html">News Feed</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html" class="nav-cta">Join Community &rarr;</a></div></nav>
+
+<div class="page-header">
+<div class="container">
+<div class="section-label">Comprehensive Index</div>
+<h1>Data Sources for Remote Sensing</h1>
+<p>75+ satellite imagery, SAR, LiDAR, and geospatial data sources from US Federal agencies, National Laboratories, regional programs, and global providers.</p>
+</div>
+</div>
+
+<section class="container" style="padding-top:40px">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search data sources... (e.g., SAR, LiDAR, flood, NASA)" onkeyup="filterCards()"></div>
+<div class="cat-nav">
+<a href="#federal" class="active">US Federal</a>
+<a href="#national-labs">National Labs</a>
+<a href="#lidar">LiDAR &amp; Elevation</a>
+<a href="#commercial">Commercial</a>
+<a href="#regional">Regional US</a>
+<a href="#global">Global &amp; International</a>
+</div>
+</section>
+
+<!-- ═══ US FEDERAL AGENCIES ═══ -->
+<section id="federal" class="container" style="padding-top:20px">
+<div class="section-header"><div class="section-label">US Federal Government</div><h2 class="section-title">Federal Satellite &amp; Remote Sensing Data</h2><p class="section-desc">Authoritative data from NASA, NOAA, USGS, FEMA, and other federal agencies.</p></div>
+<div class="resource-grid">
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA Earthdata</h3><p>Central portal for all NASA Earth science data including MODIS, VIIRS, Landsat, ICESat-2, and 12,000+ datasets across atmosphere, land, ocean, and cryosphere.</p><a href="https://earthdata.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA FIRMS &mdash; Fire Information</h3><p>Near real-time active fire data from MODIS and VIIRS satellites. Updated every 3 hours. Critical for wildfire response and monitoring.</p><a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA Worldview</h3><p>Interactive browser for 1,000+ satellite imagery layers with near real-time views. Supports time-series animation and event visualization.</p><a href="https://worldview.earthdata.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA Disasters Mapping Portal</h3><p>NASA&rsquo;s disaster response coordination hub providing activation maps, satellite imagery, and damage assessments during active events.</p><a href="https://disasters.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA SEDAC</h3><p>Socioeconomic Data and Applications Center. Population, infrastructure, and environmental data critical for disaster vulnerability assessment.</p><a href="https://sedac.ciesin.columbia.edu/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA Giovanni</h3><p>Web-based tool for visualization and analysis of Earth science data including precipitation, aerosols, temperature, and atmospheric composition.</p><a href="https://giovanni.gsfc.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA-ISRO NISAR Mission</h3><p>Joint L-band and S-band SAR mission launched 2025. Provides unprecedented surface deformation, ice sheet dynamics, and ecosystem monitoring data.</p><a href="https://nisar.jpl.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA POWER</h3><p>Prediction of Worldwide Energy Resources. Solar and meteorological data from satellite observations for renewable energy and agriculture.</p><a href="https://power.larc.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA CMR (Common Metadata Repository)</h3><p>Programmatic API access to metadata for all NASA Earth science collections. Essential for developers building remote sensing applications.</p><a href="https://cmr.earthdata.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USGS</div><h3>USGS EarthExplorer</h3><p>Search and download Landsat, Sentinel-2, aerial photography, NAIP, declassified satellite imagery, and 40+ additional collections.</p><a href="https://earthexplorer.usgs.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USGS</div><h3>USGS National Map</h3><p>Topographic maps, orthoimagery, elevation data, hydrography, land cover, and geographic names covering the entire United States.</p><a href="https://apps.nationalmap.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USGS</div><h3>Landsat Program</h3><p>50+ years of continuous Earth observation. Landsat 8 &amp; 9 provide 30m multispectral and 15m panchromatic imagery every 8 days.</p><a href="https://www.usgs.gov/landsat-missions" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USGS</div><h3>USGS Hazards Data</h3><p>Real-time earthquake, volcanic, and landslide hazard data including ShakeMap, PAGER, and DYFI products.</p><a href="https://www.usgs.gov/programs/earthquake-hazards" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USGS</div><h3>USGS Flood Event Viewer</h3><p>High-water marks, sensor data, and event documentation from flood events across the United States.</p><a href="https://stn.wim.usgs.gov/FEV/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA NESDIS</h3><p>Central access to GOES-16/17/18 geostationary, JPSS polar-orbiting, and DSCOVR satellite data for weather, ocean, and environmental monitoring.</p><a href="https://www.nesdis.noaa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA CLASS</h3><p>Comprehensive Large Array-data Stewardship System. Archive of NOAA satellite data including GOES, POES, JPSS, and ocean products.</p><a href="https://www.avl.class.noaa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA NCEI (Climate Data)</h3><p>National Centers for Environmental Information. Climate, weather, ocean, and geophysical data from satellite, ground, and marine sources.</p><a href="https://www.ncei.noaa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA Digital Coast</h3><p>Coastal LiDAR, land cover, imagery, and socioeconomic data for coastal hazard assessment and resilience planning.</p><a href="https://coast.noaa.gov/digitalcoast/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA Sea, Lake, Ice Snow</h3><p>Satellite-derived products for sea surface temperature, snow cover, ice extent, and lake levels from NOAA/NESDIS STAR.</p><a href="https://www.star.nesdis.noaa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA Storm Events Database</h3><p>Historical record of severe weather events across the US including damage estimates, fatalities, and event narratives.</p><a href="https://www.ncdc.noaa.gov/stormevents/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA SWFO-L1</h3><p>Space Weather Follow-On L1 observatory launched 2025. Monitors solar wind and space weather from 1 million miles away.</p><a href="https://www.nesdis.noaa.gov/current-satellite-missions/currently-flying/swfo-l1" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">FEMA</div><h3>FEMA GeoPlatform</h3><p>FEMA&rsquo;s geospatial data hub with flood maps, hazard layers, damage assessments, and emergency management boundaries.</p><a href="https://geoplatform.maps.arcgis.com/home/group.html?id=fema" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">FEMA</div><h3>FEMA Flood Map Service Center</h3><p>National Flood Insurance Program maps, flood zones, and base flood elevation data for all US communities.</p><a href="https://msc.fema.gov/portal/home" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">FEMA</div><h3>FEMA Hazus</h3><p>Multi-hazard loss estimation software for earthquake, flood, hurricane, and tsunami risk assessment.</p><a href="https://www.fema.gov/flood-maps/products-tools/hazus" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USDA</div><h3>USDA NAIP</h3><p>National Agriculture Imagery Program. 60cm aerial imagery covering the continental US, updated on a 2-3 year cycle.</p><a href="https://naip-usdaonline.hub.arcgis.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USDA</div><h3>USDA CropScape</h3><p>Cropland data layers derived from satellite imagery covering crop types, acreage, and agricultural land use across the US.</p><a href="https://nassgeodata.gmu.edu/CropScape/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NGA</div><h3>NGA GEOINTegrity</h3><p>National Geospatial-Intelligence Agency. Foundation geospatial data, elevation models, and geopolitical boundaries.</p><a href="https://www.nga.mil/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">DOE</div><h3>DOE Atmospheric Radiation Measurement</h3><p>High-quality atmospheric and cloud data from fixed and mobile sites worldwide. Critical for climate and weather modeling.</p><a href="https://www.arm.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+</div>
+</section>
+
+<!-- ═══ NATIONAL LABS ═══ -->
+<section id="national-labs" class="resources-section" style="margin-top:60px">
+<div class="container">
+<div class="section-header"><div class="section-label">National Laboratories</div><h2 class="section-title">DOE &amp; National Lab Data</h2><p class="section-desc">Cutting-edge research data from US Department of Energy national laboratories.</p></div>
+<div class="resource-grid">
+<div class="resource-card"><div class="rc-type">ORNL</div><h3>Oak Ridge National Lab &mdash; DAAC</h3><p>NASA ORNL Distributed Active Archive Center for biogeochemical dynamics, ecology, and land processes.</p><a href="https://daac.ornl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">ORNL</div><h3>LandScan Population Data</h3><p>Global and US population distribution datasets at ~1km resolution. Essential for disaster impact estimation.</p><a href="https://landscan.ornl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Sandia</div><h3>Sandia National Labs &mdash; Remote Sensing</h3><p>Synthetic Aperture Radar research, hyperspectral imaging, and sensor development for national security applications.</p><a href="https://www.sandia.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">LANL</div><h3>Los Alamos National Lab</h3><p>Space and remote sensing research including satellite instrument development, data analytics, and climate monitoring.</p><a href="https://www.lanl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">PNNL</div><h3>Pacific Northwest National Lab</h3><p>Environmental remote sensing, atmospheric science, and coastal resilience data from DOE&rsquo;s Pacific Northwest Laboratory.</p><a href="https://www.pnnl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">LLNL</div><h3>Lawrence Livermore National Lab</h3><p>Climate modeling, atmospheric monitoring, and geospatial analytics capabilities for disaster and environmental assessment.</p><a href="https://www.llnl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">ANL</div><h3>Argonne National Lab</h3><p>Environmental science research, urban heat island mapping, and energy infrastructure resilience data.</p><a href="https://www.anl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">BNL</div><h3>Brookhaven National Lab</h3><p>Atmospheric and climate research with satellite calibration/validation and environmental monitoring capabilities.</p><a href="https://www.bnl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">INL</div><h3>Idaho National Lab</h3><p>Geospatial analytics, wildfire risk modeling, and critical infrastructure resilience assessment data.</p><a href="https://www.inl.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NREL</div><h3>National Renewable Energy Lab</h3><p>GIS and geospatial data for solar, wind, geothermal resources plus tools like the RE Data Explorer and System Advisor Model.</p><a href="https://www.nrel.gov/gis/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+</div>
+</div>
+</section>
+
+<!-- ═══ LIDAR & ELEVATION ═══ -->
+<section id="lidar" class="container" style="padding-top:60px">
+<div class="section-header"><div class="section-label">3D &amp; Terrain</div><h2 class="section-title">LiDAR &amp; Elevation Data</h2><p class="section-desc">High-resolution 3D point clouds, digital elevation models, and terrain data for the United States.</p></div>
+<div class="resource-grid">
+<div class="resource-card"><div class="rc-type">USGS</div><h3>USGS 3DEP &mdash; 3D Elevation Program</h3><p>National LiDAR coverage initiative providing 1m DEMs for the entire US. Quality Level 2 (QL2) LiDAR point clouds.</p><a href="https://www.usgs.gov/3d-elevation-program" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NOAA</div><h3>NOAA Coastal LiDAR</h3><p>Post-storm and baseline coastal LiDAR datasets for shoreline change, flood modeling, and coastal erosion analysis.</p><a href="https://coast.noaa.gov/dataviewer/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">OpenTopography</div><h3>OpenTopography</h3><p>Community platform for high-resolution topography data including LiDAR point clouds, DEMs, and bathymetry globally.</p><a href="https://opentopography.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USGS</div><h3>National Elevation Dataset (NED)</h3><p>Seamless 10m and 30m DEMs covering the US. Being replaced by higher-resolution 3DEP products.</p><a href="https://apps.nationalmap.gov/downloader/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USGS</div><h3>USGS LiDAR Explorer</h3><p>Interactive viewer and download tool for all USGS 3DEP LiDAR collections by project, state, and date.</p><a href="https://apps.nationalmap.gov/lidar-explorer/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>NASA ICESat-2</h3><p>Spaceborne LiDAR measuring ice sheet elevation, sea ice freeboard, terrain heights, and vegetation canopy height globally.</p><a href="https://icesat-2.gsfc.nasa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">NASA</div><h3>GEDI (LiDAR from ISS)</h3><p>Global Ecosystem Dynamics Investigation. Spaceborne LiDAR from the ISS measuring forest canopy height and structure.</p><a href="https://gedi.umd.edu/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">USACE</div><h3>USACE Geospatial Data</h3><p>US Army Corps of Engineers elevation, hydrographic survey, and navigation channel data.</p><a href="https://www.agc.army.mil/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+</div>
+</section>
+
+<!-- ═══ COMMERCIAL ═══ -->
+<section id="commercial" class="resources-section" style="margin-top:60px">
+<div class="container">
+<div class="section-header"><div class="section-label">Commercial</div><h2 class="section-title">Commercial Providers</h2><p class="section-desc">High-resolution imagery and data from commercial satellite operators and platforms.</p></div>
+<div class="resource-grid">
+<div class="resource-card"><div class="rc-type">Platform</div><h3>Maxar &mdash; SecureWatch</h3><p>30cm optical imagery from WorldView-3/4 and Legion constellation. Industry leader in high-resolution satellite imagery.</p><a href="https://www.maxar.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Platform</div><h3>Planet Labs</h3><p>Daily 3m imagery from 200+ Dove satellites plus 50cm SkySat tasking. Best temporal resolution commercially available.</p><a href="https://www.planet.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">SAR</div><h3>Capella Space</h3><p>High-resolution X-band SAR imagery with sub-meter resolution and rapid tasking for all-weather, day-night imaging.</p><a href="https://www.capellaspace.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">SAR</div><h3>ICEYE</h3><p>X-band SAR microsatellite constellation providing flood monitoring, ground deformation, and infrastructure monitoring.</p><a href="https://www.iceye.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">SAR</div><h3>Umbra</h3><p>Ultra-high-resolution (16cm) SAR imagery. Open data program provides free SAR samples for research.</p><a href="https://umbra.space/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Platform</div><h3>Airbus Defence &amp; Space</h3><p>Pl&eacute;iades Neo (30cm), SPOT (1.5m), and TerraSAR-X radar imagery for defense and civilian applications.</p><a href="https://www.intelligence-airbusds.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Platform</div><h3>BlackBridge / Planet RapidEye</h3><p>5m multispectral imagery with red-edge band particularly useful for vegetation and agriculture monitoring.</p><a href="https://www.planet.com/products/planet-imagery/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">AI Platform</div><h3>nltGIS.ai</h3><p>AI-native spatial intelligence platform. Query 200+ authoritative datasets on hazards, population, and infrastructure using natural language.</p><a href="https://nltgis.ai" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Platform</div><h3>SkyWatch / EarthCache</h3><p>API marketplace aggregating satellite imagery from multiple providers with simplified ordering and delivery.</p><a href="https://www.skywatch.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">SAR</div><h3>Synspective</h3><p>L-band SAR constellation from Japan focused on infrastructure monitoring and disaster response.</p><a href="https://synspective.com/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+</div>
+</div>
+</section>
+
+<!-- ═══ REGIONAL US ═══ -->
+<section id="regional" class="container" style="padding-top:60px">
+<div class="section-header"><div class="section-label">Regional &amp; State</div><h2 class="section-title">Regional US Programs</h2><p class="section-desc">State, regional, and multi-agency data programs within the United States.</p></div>
+<div class="resource-grid">
+<div class="resource-card"><div class="rc-type">CIRES</div><h3>NOAA/CIRES &mdash; Western Water Assessment</h3><p>Drought, water supply, and climate adaptation data for the Intermountain West from NOAA and CU Boulder.</p><a href="https://wwa.colorado.edu/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Regional</div><h3>USGS EROS Center</h3><p>Earth Resources Observation and Science Center in Sioux Falls, SD. Primary archive for Landsat and aerial photography.</p><a href="https://www.usgs.gov/centers/eros" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">State</div><h3>California Spatial Information Library</h3><p>California&rsquo;s statewide geospatial data portal including fire perimeters, earthquake data, and hazard zones.</p><a href="https://gis.data.ca.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">State</div><h3>Texas Natural Resources Info System</h3><p>Texas&rsquo; comprehensive GIS data hub with LiDAR, orthoimagery, elevation, and historical aerial photography.</p><a href="https://tnris.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">State</div><h3>Florida Geographic Data Library</h3><p>Florida statewide GIS data clearinghouse for environmental, hazard, and land use datasets.</p><a href="https://www.fgdl.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Regional</div><h3>Pacific Disaster Center</h3><p>Multi-hazard early warning system and disaster intelligence covering the Pacific region with real-time event monitoring.</p><a href="https://www.pdc.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Regional</div><h3>Great Lakes Coastal Forecasting</h3><p>NOAA Great Lakes Environmental Research Lab providing lake level, ice cover, and coastal hazard data.</p><a href="https://www.glerl.noaa.gov/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Regional</div><h3>Alaska Satellite Facility</h3><p>NASA SAR data center. Free access to Sentinel-1, ALOS PALSAR, and historical SAR datasets for any region globally.</p><a href="https://asf.alaska.edu/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+</div>
+</section>
+
+<!-- ═══ GLOBAL & INTERNATIONAL ═══ -->
+<section id="global" class="resources-section" style="margin-top:60px;padding-bottom:80px">
+<div class="container">
+<div class="section-header"><div class="section-label">Global &amp; International</div><h2 class="section-title">Global Data Sources</h2><p class="section-desc">Major international Earth observation programs and global datasets from ESA, JAXA, and multinational initiatives.</p></div>
+<div class="resource-grid">
+<div class="resource-card"><div class="rc-type">ESA</div><h3>Copernicus Open Access Hub</h3><p>Free access to Sentinel-1 (SAR), Sentinel-2 (optical), Sentinel-3 (ocean/land), and Sentinel-5P (atmospheric) data.</p><a href="https://dataspace.copernicus.eu/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">ESA</div><h3>Copernicus Emergency Management</h3><p>Rapid mapping service providing damage grading, flood extent, and situation maps within hours of EU activation.</p><a href="https://emergency.copernicus.eu/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">ESA</div><h3>Copernicus Sentinel-4 (2025)</h3><p>Launched July 2025 on MTG-S1. Provides hourly atmospheric composition monitoring over Europe.</p><a href="https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-4_and_-5" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">ESA</div><h3>ESA Earth Online</h3><p>Gateway to all ESA Earth observation missions including ERS, Envisat, CryoSat, SMOS, Aeolus, and upcoming missions.</p><a href="https://earth.esa.int/eogateway" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">JAXA</div><h3>JAXA ALOS Data</h3><p>ALOS-2 PALSAR-2 L-band SAR data from Japan. Excellent forest monitoring and disaster response capabilities.</p><a href="https://www.eorc.jaxa.jp/ALOS/en/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">JAXA</div><h3>JAXA Global Rainfall Watch</h3><p>Global Satellite Mapping of Precipitation providing near real-time rainfall estimates at 10km resolution.</p><a href="https://sharaku.eorc.jaxa.jp/GSMaP/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">DLR</div><h3>German Aerospace Center (DLR)</h3><p>TerraSAR-X and TanDEM-X SAR missions providing high-resolution X-band radar data and global 12m DEM.</p><a href="https://www.dlr.de/eoc/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">ISRO</div><h3>ISRO Bhuvan</h3><p>India&rsquo;s geoportal with data from Cartosat, Resourcesat, and Oceansat missions covering South Asia.</p><a href="https://bhuvan.nrsc.gov.in/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">CSA</div><h3>Canada EODMS</h3><p>RADARSAT Constellation Mission (RCM) C-band SAR data for Arctic monitoring, maritime surveillance, and disaster response.</p><a href="https://www.eodms-sgdot.nrcan-rncan.gc.ca/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Global</div><h3>Global Flood Monitoring (GFM)</h3><p>Near real-time global flood extent mapping using Sentinel-1 SAR data. Updated every 6-12 hours during flood events.</p><a href="https://global-flood.emergency.copernicus.eu/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">UN</div><h3>UNOSAT (UN Satellite Centre)</h3><p>United Nations satellite analysis and rapid mapping for humanitarian response and disaster management.</p><a href="https://unosat.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">CGIAR</div><h3>SRTM Elevation Data</h3><p>Shuttle Radar Topography Mission global 30m and 90m elevation data freely available for any application.</p><a href="https://srtm.csi.cgiar.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Global</div><h3>Global Forest Watch</h3><p>Near real-time forest change monitoring combining Landsat, Sentinel, and VIIRS data for deforestation and fire detection.</p><a href="https://www.globalforestwatch.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Global</div><h3>OpenAerialMap</h3><p>Open collection of post-disaster aerial and drone imagery contributed by humanitarian and disaster response organizations.</p><a href="https://openaerialmap.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">Global</div><h3>Humanitarian OpenStreetMap</h3><p>Community-driven mapping initiative providing building footprints, road networks, and infrastructure data for disaster-prone areas.</p><a href="https://www.hotosm.org/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+<div class="resource-card"><div class="rc-type">WMO</div><h3>WMO OSCAR Satellite Status</h3><p>World Meteorological Organization database of all operational and planned weather and environmental satellites worldwide.</p><a href="https://space.oscar.wmo.int/" target="_blank" class="rc-link">Access Data &rarr;</a></div>
+</div>
+</div>
+</section>
+
+<script>
+function filterCards(){var q=document.getElementById('searchInput').value.toLowerCase();document.querySelectorAll('.resource-card').forEach(function(c){var t=c.textContent.toLowerCase();c.style.display=t.includes(q)?'':'none'});}
+document.querySelectorAll('.cat-nav a').forEach(function(a){a.addEventListener('click',function(e){document.querySelectorAll('.cat-nav a').forEach(function(x){x.classList.remove('active')});this.classList.add('active');})});
+</script>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom"><span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span><div class="footer-badges"><span class="footer-badge">Open Community</span><span class="footer-badge">75+ Data Sources</span></div></div></div></footer>
+</body>
+</html>
