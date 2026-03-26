@@ -253,5 +253,99 @@
     </div>
   </footer>
 
+
+<!-- ═══ POPUP OVERLAY ═══ -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
+<div class="info-popup" id="infoPopup">
+  <div class="popup-header">
+    <h3><span class="popup-icon" id="popupIcon"></span> <span id="popupTitle"></span></h3>
+    <button class="popup-close" onclick="closePopup()">&times;</button>
+  </div>
+  <div class="popup-body" id="popupBody"></div>
+  <div class="popup-footer" id="popupFooter"></div>
+</div>
+
+<script>
+const popupData = {
+  'sar': { icon: '&#128225;', title: 'Synthetic Aperture Radar (SAR)',
+    body: '<p>SAR is an active microwave remote sensing technology that transmits radar pulses and records the reflected signal. Unlike optical sensors, SAR can image the Earth\'s surface through clouds, rain, smoke, and darkness, making it critical for disaster response.</p><p>SAR measures backscatter intensity and phase. Different frequency bands (L-band, C-band, X-band) penetrate vegetation and soil to varying depths. Key applications include flood mapping, ground deformation monitoring, oil spill detection, and building damage assessment.</p><div class="popup-meta"><span class="popup-tag">Active Sensor</span><span class="popup-tag">All-Weather</span><span class="popup-tag">Day/Night</span></div>',
+    footer: '<a href="data-sources.html" class="btn btn-primary">View SAR Data Sources</a><a href="https://www.earthdata.nasa.gov/learn/backgrounders/what-is-sar" target="_blank" class="btn btn-outline">NASA SAR Guide &#8599;</a>' },
+  'insar': { icon: '&#128225;', title: 'Interferometric SAR (InSAR)',
+    body: '<p>InSAR is a technique that combines two or more SAR images to measure surface deformation with millimeter-level precision. By analyzing the phase difference between acquisitions, InSAR can detect ground subsidence, tectonic uplift, volcanic inflation, and infrastructure movement.</p><p>Applications include earthquake damage mapping, landslide monitoring, flood extent delineation using coherence change, and measuring post-seismic deformation. Key missions: NISAR (L+S band), Sentinel-1 (C-band), ALOS-2 PALSAR-2 (L-band).</p><div class="popup-meta"><span class="popup-tag">Phase Analysis</span><span class="popup-tag">mm-Level Precision</span><span class="popup-tag">Deformation</span></div>',
+    footer: '<a href="data-sources.html" class="btn btn-outline">View InSAR Sources</a>' },
+  'lidar': { icon: '&#127758;', title: 'Light Detection and Ranging (LiDAR)',
+    body: '<p>LiDAR is an active remote sensing technology that uses laser pulses to measure distances to the Earth\'s surface, producing high-resolution 3D point clouds and digital elevation models (DEMs).</p><p>Airborne LiDAR is used for topographic mapping, forest canopy height measurement, coastal erosion monitoring, and urban modeling. Spaceborne LiDAR missions include ICESat-2 (ice sheet/vegetation height) and GEDI (forest structure). USGS 3DEP is the national LiDAR program for the United States.</p><div class="popup-meta"><span class="popup-tag">Active Sensor</span><span class="popup-tag">3D Point Clouds</span><span class="popup-tag">Elevation Data</span></div>',
+    footer: '<a href="data-sources.html" class="btn btn-primary">View LiDAR Sources</a><a href="https://www.usgs.gov/3d-elevation-program" target="_blank" class="btn btn-outline">USGS 3DEP &#8599;</a>' },
+  'nisar': { icon: '&#128752;', title: 'NISAR (NASA-ISRO SAR)',
+    body: '<p>NISAR is a joint NASA and Indian Space Research Organisation (ISRO) mission launched in 2024 carrying both L-band and S-band SAR instruments. It is the first dual-frequency SAR satellite mission, designed to observe Earth\'s land and ice surfaces with 12-day repeat coverage.</p><p>NISAR provides unprecedented InSAR capabilities for measuring crustal deformation (earthquakes, volcanoes), ice sheet dynamics, vegetation biomass, and surface water changes. The L-band penetrates deeper into vegetation and soil than C-band systems like Sentinel-1.</p><div class="popup-meta"><span class="popup-tag">NASA + ISRO</span><span class="popup-tag">L-Band + S-Band</span><span class="popup-tag">12-Day Repeat</span></div>',
+    footer: '<a href="https://nisar.jpl.nasa.gov/" target="_blank" class="btn btn-primary">NISAR Mission &#8599;</a>' },
+  'sentinel1': { icon: '&#128752;', title: 'Sentinel-1 (ESA C-Band SAR)',
+    body: '<p>Sentinel-1 is the European Space Agency\'s (ESA) C-band SAR mission under the Copernicus programme. Sentinel-1A and 1C provide free, open-access SAR imagery with 6-day repeat coverage (at the equator) in Interferometric Wide (IW) swath mode at ~5x20m resolution.</p><p>Sentinel-1 is the workhorse for operational InSAR, flood mapping, sea ice monitoring, and ship detection. Data is freely available through Copernicus Open Access Hub and Alaska Satellite Facility (ASF).</p><div class="popup-meta"><span class="popup-tag">ESA / Copernicus</span><span class="popup-tag">C-Band SAR</span><span class="popup-tag">Free &amp; Open</span></div>',
+    footer: '<a href="https://dataspace.copernicus.eu/" target="_blank" class="btn btn-primary">Copernicus Data &#8599;</a><a href="https://search.asf.alaska.edu/" target="_blank" class="btn btn-outline">ASF Search &#8599;</a>' },
+  'sentinel2': { icon: '&#128752;', title: 'Sentinel-2 (ESA Multispectral)',
+    body: '<p>Sentinel-2 is ESA\'s multispectral optical imaging mission providing 10m-resolution imagery in 13 spectral bands with 5-day revisit. Key bands include visible (RGB), near-infrared (NIR), red edge, and shortwave infrared (SWIR).</p><p>Applications: vegetation health (NDVI), burn severity (NBR), water body mapping (NDWI), land cover classification, agricultural monitoring. Free and open data via Copernicus Data Space.</p><div class="popup-meta"><span class="popup-tag">ESA / Copernicus</span><span class="popup-tag">10m Optical</span><span class="popup-tag">13 Bands</span></div>',
+    footer: '<a href="https://dataspace.copernicus.eu/" target="_blank" class="btn btn-primary">Copernicus Data &#8599;</a>' },
+  'goes': { icon: '&#127777;', title: 'GOES (Geostationary Operational Environmental Satellites)',
+    body: '<p>GOES is NOAA\'s fleet of geostationary weather satellites providing continuous monitoring of the Western Hemisphere. The current GOES-R series (GOES-16, -17, -18, -19) carries the Advanced Baseline Imager (ABI) with 16 spectral bands at up to 0.5km resolution.</p><p>GOES provides mesoscale imagery at 1-minute intervals for severe weather tracking, fire detection, volcanic ash monitoring, and fog/low cloud analysis. Critical for hurricane tracking and emergency management.</p><div class="popup-meta"><span class="popup-tag">NOAA</span><span class="popup-tag">Geostationary</span><span class="popup-tag">Real-Time Weather</span></div>',
+    footer: '<a href="https://www.star.nesdis.noaa.gov/goes/" target="_blank" class="btn btn-primary">GOES Imagery &#8599;</a>' },
+  'landsat': { icon: '&#128752;', title: 'Landsat (USGS/NASA)',
+    body: '<p>Landsat is the longest-running continuous Earth observation program, operating since 1972. Landsat 8 and Landsat 9 provide 30m multispectral imagery in 11 bands with 8-day combined revisit. The Operational Land Imager (OLI) captures visible, NIR, and SWIR bands; the Thermal Infrared Sensor (TIRS) measures surface temperature.</p><p>Landsat data is free and open. Applications include land cover change detection, urban growth mapping, water quality assessment, and pre/post disaster damage analysis. Landsat Next is under development with 26 bands and 10-20m resolution.</p><div class="popup-meta"><span class="popup-tag">USGS / NASA</span><span class="popup-tag">30m Resolution</span><span class="popup-tag">Since 1972</span></div>',
+    footer: '<a href="https://www.usgs.gov/landsat-missions" target="_blank" class="btn btn-primary">Landsat Program &#8599;</a><a href="https://earthexplorer.usgs.gov/" target="_blank" class="btn btn-outline">EarthExplorer &#8599;</a>' },
+  'modis': { icon: '&#128752;', title: 'MODIS (Moderate Resolution Imaging Spectroradiometer)',
+    body: '<p>MODIS flies on NASA\'s Terra and Aqua satellites, providing daily global coverage in 36 spectral bands at 250m-1km resolution. MODIS is essential for large-scale monitoring of vegetation, fire, aerosols, ocean color, snow/ice, and land surface temperature.</p><p>Key products: active fire detection (MOD14), normalized burn ratio, NDVI composites, land surface temperature, and cloud properties. While lower resolution than Landsat, MODIS excels in daily monitoring and rapid change detection.</p><div class="popup-meta"><span class="popup-tag">NASA Terra/Aqua</span><span class="popup-tag">Daily Global</span><span class="popup-tag">36 Bands</span></div>',
+    footer: '<a href="https://modis.gsfc.nasa.gov/" target="_blank" class="btn btn-primary">MODIS &#8599;</a>' },
+  'viirs': { icon: '&#127777;', title: 'VIIRS (Visible Infrared Imaging Radiometer Suite)',
+    body: '<p>VIIRS flies on NOAA\'s JPSS polar-orbiting satellites (Suomi NPP, NOAA-20, NOAA-21). It provides 22 spectral bands at 375m-750m resolution with daily global coverage, serving as the operational successor to MODIS.</p><p>Key capabilities: nighttime lights/fire detection (Day-Night Band), active fire monitoring, sea surface temperature, ocean color, vegetation health indices, and aerosol optical depth. VIIRS data feeds into NOAA\'s operational environmental monitoring systems.</p><div class="popup-meta"><span class="popup-tag">NOAA JPSS</span><span class="popup-tag">Day-Night Band</span><span class="popup-tag">Operational</span></div>',
+    footer: '<a href="https://www.nesdis.noaa.gov/JPSS" target="_blank" class="btn btn-primary">JPSS/VIIRS &#8599;</a>' },
+  'alos2': { icon: '&#128225;', title: 'ALOS-2 PALSAR-2 (JAXA L-Band SAR)',
+    body: '<p>ALOS-2 is JAXA\'s Advanced Land Observing Satellite-2, carrying the PALSAR-2 L-band SAR instrument. L-band radar penetrates deeper into vegetation canopy than C-band (Sentinel-1) or X-band systems, making it valuable for forest biomass estimation and deformation monitoring in vegetated areas.</p><p>PALSAR-2 provides stripmap (10m), ScanSAR (100m), and spotlight (1-3m) modes. The successor ALOS-4 with PALSAR-3 launched in 2024 with improved capabilities including wider swath coverage.</p><div class="popup-meta"><span class="popup-tag">JAXA</span><span class="popup-tag">L-Band SAR</span><span class="popup-tag">Vegetation Penetration</span></div>',
+    footer: '<a href="https://www.eorc.jaxa.jp/ALOS-2/" target="_blank" class="btn btn-primary">ALOS-2 &#8599;</a>' },
+  '3dep': { icon: '&#127758;', title: 'USGS 3DEP (3D Elevation Program)',
+    body: '<p>The 3D Elevation Program (3DEP) is a USGS initiative to provide complete national LiDAR coverage for the United States. 3DEP acquires high-resolution elevation data using airborne LiDAR at Quality Level 2 (QL2) or better, producing point clouds and derived DEMs at 1-meter resolution.</p><p>Applications include flood risk mapping (FEMA Risk Rating 2.0), landslide susceptibility, coastal storm surge modeling, forest inventory, and infrastructure planning. Data is free through The National Map and USGS LiDAR Explorer.</p><div class="popup-meta"><span class="popup-tag">USGS</span><span class="popup-tag">National LiDAR</span><span class="popup-tag">1m DEMs</span></div>',
+    footer: '<a href="https://www.usgs.gov/3d-elevation-program" target="_blank" class="btn btn-primary">3DEP &#8599;</a><a href="https://apps.nationalmap.gov/lidar-explorer/" target="_blank" class="btn btn-outline">LiDAR Explorer &#8599;</a>' },
+  'icesat2': { icon: '&#127758;', title: 'ICESat-2 (Ice, Cloud & Land Elevation Satellite)',
+    body: '<p>ICESat-2 is a NASA mission carrying the ATLAS laser altimeter, measuring surface elevation using photon-counting LiDAR technology. It provides precise elevation measurements of ice sheets, glaciers, sea ice freeboard, vegetation canopy height, and inland water levels.</p><p>ICESat-2 measures along-track profiles (not continuous swaths) with ~0.7m footprint and ~17m along-track spacing. Data enables ice sheet mass balance studies, forest biomass estimation, and inland water level monitoring.</p><div class="popup-meta"><span class="popup-tag">NASA</span><span class="popup-tag">Laser Altimetry</span><span class="popup-tag">Ice &amp; Vegetation</span></div>',
+    footer: '<a href="https://icesat-2.gsfc.nasa.gov/" target="_blank" class="btn btn-primary">ICESat-2 &#8599;</a>' },
+  'gedi': { icon: '&#127794;', title: 'GEDI (Global Ecosystem Dynamics Investigation)',
+    body: '<p>GEDI is a NASA full-waveform LiDAR instrument that operated on the International Space Station (ISS) from 2019-2023. It measured vegetation 3D structure, canopy height, and above-ground biomass density across the tropics and temperate regions (between 51.6\u00b0N and 51.6\u00b0S).</p><p>GEDI data provides the most comprehensive global forest canopy height and biomass estimates available, supporting carbon cycle science and REDD+ programs.</p><div class="popup-meta"><span class="popup-tag">NASA / ISS</span><span class="popup-tag">Full-Waveform LiDAR</span><span class="popup-tag">Forest Biomass</span></div>',
+    footer: '<a href="https://gedi.umd.edu/" target="_blank" class="btn btn-primary">GEDI &#8599;</a>' },
+  'digitalcoast': { icon: '&#127754;', title: 'NOAA Digital Coast',
+    body: '<p>NOAA Digital Coast provides coastal intelligence data, tools, and training for the coastal management community. It hosts elevation data (LiDAR, bathymetry), land cover, imagery, and socioeconomic data for US coastal areas.</p><p>Key tools include the Sea Level Rise Viewer, Coastal Flood Exposure Mapper, and the Coastal Change Analysis Program (C-CAP) land cover data. Essential for coastal resilience planning and storm surge modeling.</p><div class="popup-meta"><span class="popup-tag">NOAA OCM</span><span class="popup-tag">Coastal Data</span><span class="popup-tag">Free Tools</span></div>',
+    footer: '<a href="https://coast.noaa.gov/digitalcoast/" target="_blank" class="btn btn-primary">Digital Coast &#8599;</a>' },
+  'jpss': { icon: '&#127777;', title: 'JPSS (Joint Polar Satellite System)',
+    body: '<p>JPSS is NOAA\'s operational polar-orbiting satellite system providing global environmental data for weather forecasting, climate monitoring, and environmental assessment. The constellation includes Suomi NPP, NOAA-20, and NOAA-21.</p><p>JPSS satellites carry VIIRS (imaging), CrIS (atmospheric sounding), ATMS (microwave sounding), and OMPS (ozone mapping). Data supports 7-day weather forecasts, fire detection, sea surface temperature, and vegetation monitoring.</p><div class="popup-meta"><span class="popup-tag">NOAA</span><span class="popup-tag">Polar Orbit</span><span class="popup-tag">Weather Forecasting</span></div>',
+    footer: '<a href="https://www.nesdis.noaa.gov/JPSS" target="_blank" class="btn btn-primary">JPSS &#8599;</a>' },
+  'himawari': { icon: '&#127777;', title: 'Himawari (JMA Geostationary)',
+    body: '<p>Himawari-8 and Himawari-9 are Japan Meteorological Agency (JMA) geostationary weather satellites monitoring the Asia-Pacific region. They carry the Advanced Himawari Imager (AHI) with 16 spectral bands similar to GOES ABI.</p><p>Himawari provides 10-minute full-disk imagery and 2.5-minute rapid scan for severe weather monitoring, typhoon tracking, volcanic ash detection, and wildfire monitoring in the Asia-Pacific region.</p><div class="popup-meta"><span class="popup-tag">JMA (Japan)</span><span class="popup-tag">Geostationary</span><span class="popup-tag">Asia-Pacific</span></div>',
+    footer: '<a href="https://www.data.jma.go.jp/mscweb/en/himawari89/" target="_blank" class="btn btn-primary">Himawari &#8599;</a>' },
+  'meteosat': { icon: '&#127777;', title: 'Meteosat (EUMETSAT Geostationary)',
+    body: '<p>Meteosat is the European geostationary weather satellite series operated by EUMETSAT. The Meteosat Third Generation (MTG) features the Flexible Combined Imager (FCI) with 16 channels and a Lightning Imager for real-time lightning detection.</p><p>Meteosat provides continuous monitoring of Europe, Africa, and the Atlantic. MTG-I1 launched in 2022 with improved spatial and temporal resolution for nowcasting, severe weather detection, and climate monitoring.</p><div class="popup-meta"><span class="popup-tag">EUMETSAT</span><span class="popup-tag">Geostationary</span><span class="popup-tag">Europe/Africa</span></div>',
+    footer: '<a href="https://www.eumetsat.int/" target="_blank" class="btn btn-primary">EUMETSAT &#8599;</a>' },
+  'charter': { icon: '&#128680;', title: 'International Charter: Space and Major Disasters',
+    body: '<p>The International Charter provides a unified system of space data acquisition and delivery to those affected by natural or man-made disasters through Authorized Users. Since its founding in 2000, the Charter has been activated 800+ times in 130+ countries.</p><p>When activated, Charter member agencies (ESA, NASA, JAXA, CNES, CSA, ISRO, and others) task their satellites to acquire imagery over the disaster area. Data is provided free of charge to support emergency response. Activation typically occurs through national civil protection agencies.</p><div class="popup-meta"><span class="popup-tag">800+ Activations</span><span class="popup-tag">17 Member Agencies</span><span class="popup-tag">Free Imagery</span></div>',
+    footer: '<a href="https://disasterscharter.org" target="_blank" class="btn btn-primary">Disasters Charter &#8599;</a>' },
+  'copernicus-ems': { icon: '&#128680;', title: 'Copernicus Emergency Management Service',
+    body: '<p>Copernicus EMS provides timely geospatial information derived from satellite imagery and other geospatial data sources for emergency response and disaster risk management. It has two components: rapid mapping (activated within hours) and risk/recovery mapping.</p><p>Rapid mapping products include reference maps, delineation maps (flood/fire extent), grading maps (damage assessment), and monitoring maps. Products are generated using Sentinel-1/2, VHR optical, and other available imagery. All products are freely available online.</p><div class="popup-meta"><span class="popup-tag">EU / Copernicus</span><span class="popup-tag">Rapid Mapping</span><span class="popup-tag">Free Products</span></div>',
+    footer: '<a href="https://emergency.copernicus.eu/" target="_blank" class="btn btn-primary">Copernicus EMS &#8599;</a>' }
+};
+
+function showPopup(id) {
+  var data = popupData[id];
+  if (!data) return;
+  document.getElementById('popupIcon').innerHTML = data.icon;
+  document.getElementById('popupTitle').innerHTML = data.title;
+  document.getElementById('popupBody').innerHTML = data.body;
+  document.getElementById('popupFooter').innerHTML = data.footer;
+  document.getElementById('popupOverlay').classList.add('active');
+  document.getElementById('infoPopup').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('active');
+  document.getElementById('infoPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+</script>
 </body>
 </html>
