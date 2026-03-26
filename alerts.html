@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Alerts | REDICOP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .alert-hero-stats{display:flex;gap:2rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+    .ahs{text-align:center;padding:1rem 1.5rem;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius);min-width:120px}
+    .ahs .num{font-size:1.5rem;font-weight:800;color:var(--accent-bright);font-family:var(--font-mono)}
+    .ahs .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-top:2px}
+    .alert-categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+    .alert-cat{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;transition:all var(--transition)}
+    .alert-cat:hover{border-color:rgba(59,130,246,.15);transform:translateY(-3px);box-shadow:var(--shadow-glow)}
+    .alert-cat-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+    .alert-cat-icon{width:50px;height:50px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+    .alert-cat-header h3{font-size:1.15rem;color:var(--text-heading)}
+    .alert-cat-header .cat-status{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:4px;margin-left:auto}
+    .cat-status.live{background:rgba(16,185,129,.12);color:var(--accent-emerald)}
+    .cat-status.active{background:rgba(59,130,246,.12);color:var(--accent-bright)}
+    .alert-cat p{color:var(--text-secondary);font-size:.9rem;line-height:1.7;margin-bottom:1rem}
+    .source-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+    .source-tag{padding:3px 10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:100px;font-size:.75rem;color:var(--text-secondary)}
+    .alert-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+    .alert-btn{display:inline-flex;align-items:center;gap:6px;padding:.6rem 1.2rem;border-radius:var(--radius-sm);font-size:.85rem;font-weight:600;text-decoration:none;transition:all var(--transition);cursor:pointer;border:none;font-family:var(--font-sans)}
+    .alert-btn.primary{background:var(--accent);color:#fff}
+    .alert-btn.primary:hover{background:var(--accent-bright)}
+    .alert-btn.outline{background:transparent;border:1px solid var(--border-glass);color:var(--text-secondary)}
+    .alert-btn.outline:hover{border-color:var(--accent);color:var(--accent-bright)}
+    .how-it-works{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+    .hiw-step{text-align:center;padding:2rem}
+    .hiw-num{width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 1rem}
+    .hiw-step h4{color:var(--text-heading);margin-bottom:.5rem;font-size:1.05rem}
+    .hiw-step p{color:var(--text-secondary);font-size:.88rem;line-height:1.6}
+    .active-alerts{display:grid;gap:1rem}
+    .active-alert{display:grid;grid-template-columns:auto 1fr auto;gap:1.25rem;align-items:center;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius);padding:1.25rem 1.5rem;transition:all var(--transition)}
+    .active-alert:hover{border-color:rgba(59,130,246,.15)}
+    .aa-severity{width:12px;height:12px;border-radius:50%}
+    .aa-severity.critical{background:var(--danger);box-shadow:0 0 10px rgba(239,68,68,.4)}
+    .aa-severity.warning{background:var(--warning);box-shadow:0 0 10px rgba(245,158,11,.3)}
+    .aa-severity.info{background:var(--accent-bright);box-shadow:0 0 10px rgba(59,130,246,.3)}
+    .aa-severity.active{background:var(--accent-emerald);box-shadow:0 0 10px rgba(16,185,129,.3)}
+    .aa-info h4{font-size:.95rem;color:var(--text-heading);margin-bottom:.2rem}
+    .aa-info p{font-size:.82rem;color:var(--text-secondary)}
+    .aa-time{font-size:.75rem;color:var(--text-muted);text-align:right;white-space:nowrap}
+    .powered-bar{text-align:center;padding:2rem;margin-top:2rem}
+    .powered-bar a{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:100px;color:var(--text-secondary);font-size:.85rem;text-decoration:none;transition:all var(--transition)}
+    .powered-bar a:hover{border-color:var(--accent);color:var(--accent-bright)}
+    .powered-bar a strong{color:var(--accent-bright)}
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand"><div class="brand-icon">RC</div><div class="brand-text">REDI<span>COP</span></div></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="data-sources.html">Data Sources</a>
+      <a href="news.html">News Feed</a>
+      <a href="alerts.html" class="active">Alerts</a>
+      <a href="events.html">Events</a>
+      <a href="resources.html">Resources</a>
+      <a href="signup.html" class="nav-cta">Join Community &rarr;</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="section-label">Real-Time Monitoring</div>
+      <h1>Data Availability Alerts</h1>
+      <p>Subscribe to alerts for satellite imagery, SAR, LiDAR, aerial, and drone data availability. Get notified about emergency activations and new data releases.</p>
+      <div class="alert-hero-stats">
+        <div class="ahs"><div class="num">40+</div><div class="lbl">Data Sources</div></div>
+        <div class="ahs"><div class="num">24/7</div><div class="lbl">Monitoring</div></div>
+        <div class="ahs"><div class="num">6</div><div class="lbl">Alert Categories</div></div>
+        <div class="ahs"><div class="num">Real-time</div><div class="lbl">Notifications</div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="container" style="padding-top:0">
+    <div class="section-header"><div class="section-label">Current</div><h2 class="section-title">Active Alerts</h2></div>
+    <div class="active-alerts">
+      <div class="active-alert"><div class="aa-severity critical"></div><div class="aa-info"><h4>&#128680; International Disasters Charter Activation #876</h4><p>Earthquake M6.2 &mdash; Central Asia. Multiple satellite operators tasked for building damage assessment. SAR and optical imagery being collected.</p></div><div class="aa-time">2h ago</div></div>
+      <div class="active-alert"><div class="aa-severity warning"></div><div class="aa-info"><h4>&#127777;&#65039; GOES-18 Mesoscale Sector Active</h4><p>Severe storm system tracking in Gulf of Mexico. 1-minute interval imagery active. NHC monitoring for potential tropical development.</p></div><div class="aa-time">4h ago</div></div>
+      <div class="active-alert"><div class="aa-severity info"></div><div class="aa-info"><h4>&#128752; Sentinel-1 Acquisition &mdash; Eastern US</h4><p>Next descending orbit pass over eastern United States. C-band SAR data expected. Ascending pass in 18 hours.</p></div><div class="aa-time">6h ago</div></div>
+      <div class="active-alert"><div class="aa-severity active"></div><div class="aa-info"><h4>&#128225; NISAR L-Band Data Release</h4><p>New interferometric SAR products available for North America. Deformation maps and coherence data posted to NASA Earthdata.</p></div><div class="aa-time">1d ago</div></div>
+      <div class="active-alert"><div class="aa-severity active"></div><div class="aa-info"><h4>&#9992;&#65039; NOAA NGS Emergency Aerial Imagery</h4><p>Post-storm aerial photography released for southeastern coastline. High-resolution nadir imagery for damage assessment.</p></div><div class="aa-time">2d ago</div></div>
+      <div class="active-alert"><div class="aa-severity info"></div><div class="aa-info"><h4>&#127758; USGS 3DEP LiDAR Update</h4><p>New lidar point cloud data published for Pacific Northwest region. 1m resolution DEM and DSM products available.</p></div><div class="aa-time">3d ago</div></div>
+    </div>
+  </section>
+
+  <section class="about-section" style="padding:80px 0">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Subscribe</div><h2 class="section-title">Alert Categories</h2><p class="section-desc">Choose the data types you care about. Get notified via GitHub when new data becomes available.</p></div>
+      <div class="alert-categories">
+
+        <div class="alert-cat">
+          <div class="alert-cat-header"><div class="alert-cat-icon" style="background:var(--accent-glow)">&#128752;</div><div><h3>Satellite Optical Imagery</h3></div><span class="cat-status live">Live</span></div>
+          <p>Multispectral and panchromatic imagery from government and commercial satellites. Pre/post-disaster comparisons, change detection, and land cover analysis.</p>
+          <div class="source-tags"><span class="source-tag">Landsat 8/9</span><span class="source-tag">Sentinel-2</span><span class="source-tag">MODIS</span><span class="source-tag">VIIRS</span><span class="source-tag">Planet</span><span class="source-tag">Maxar</span><span class="source-tag">Airbus</span><span class="source-tag">GOES</span></div>
+          <div class="alert-actions"><a href="https://github.com/redicop/redicop.github.io/issues/new?title=Subscribe:+Satellite+Optical+Alerts&body=I+would+like+to+subscribe+to+satellite+optical+imagery+alerts.%0A%0AMy+area+of+interest:%0AMy+use+case:" target="_blank" class="alert-btn primary">&#128276; Subscribe</a><a href="data-sources.html" class="alert-btn outline">View Sources</a></div>
+        </div>
+
+        <div class="alert-cat">
+          <div class="alert-cat-header"><div class="alert-cat-icon" style="background:rgba(16,185,129,.12)">&#128225;</div><div><h3>SAR &amp; InSAR Data</h3></div><span class="cat-status live">Live</span></div>
+          <p>Synthetic Aperture Radar for all-weather, day/night imaging. Flood mapping, deformation monitoring, damage proxy maps, and coherence analysis.</p>
+          <div class="source-tags"><span class="source-tag">Sentinel-1</span><span class="source-tag">NISAR</span><span class="source-tag">ALOS-2 PALSAR</span><span class="source-tag">RADARSAT</span><span class="source-tag">TerraSAR-X</span><span class="source-tag">Capella</span><span class="source-tag">ICEYE</span><span class="source-tag">Umbra</span></div>
+          <div class="alert-actions"><a href="https://github.com/redicop/redicop.github.io/issues/new?title=Subscribe:+SAR+Data+Alerts&body=I+would+like+to+subscribe+to+SAR+and+InSAR+data+alerts.%0A%0AMy+area+of+interest:%0AMy+use+case:" target="_blank" class="alert-btn primary">&#128276; Subscribe</a><a href="data-sources.html" class="alert-btn outline">View Sources</a></div>
+        </div>
+
+        <div class="alert-cat">
+          <div class="alert-cat-header"><div class="alert-cat-icon" style="background:rgba(245,158,11,.12)">&#127758;</div><div><h3>LiDAR &amp; Elevation</h3></div><span class="cat-status active">Active</span></div>
+          <p>Point cloud, DEM, and DSM data for terrain analysis. Flood modeling, structural damage assessment, vegetation mapping, and coastal monitoring.</p>
+          <div class="source-tags"><span class="source-tag">USGS 3DEP</span><span class="source-tag">NOAA Digital Coast</span><span class="source-tag">ICESat-2</span><span class="source-tag">GEDI</span><span class="source-tag">State Programs</span></div>
+          <div class="alert-actions"><a href="https://github.com/redicop/redicop.github.io/issues/new?title=Subscribe:+LiDAR+Alerts&body=I+would+like+to+subscribe+to+LiDAR+and+elevation+data+alerts.%0A%0AMy+area+of+interest:%0AMy+use+case:" target="_blank" class="alert-btn primary">&#128276; Subscribe</a><a href="data-sources.html" class="alert-btn outline">View Sources</a></div>
+        </div>
+
+        <div class="alert-cat">
+          <div class="alert-cat-header"><div class="alert-cat-icon" style="background:rgba(168,85,247,.12)">&#9992;&#65039;</div><div><h3>Aerial &amp; Drone Data</h3></div><span class="cat-status active">Active</span></div>
+          <p>Manned aircraft and sUAS/drone imagery. Post-disaster damage surveys, oblique photography, orthomosaics, and emergency response aerial mapping.</p>
+          <div class="source-tags"><span class="source-tag">NOAA NGS</span><span class="source-tag">Civil Air Patrol</span><span class="source-tag">FEMA CAP</span><span class="source-tag">USACE</span><span class="source-tag">State DOTs</span><span class="source-tag">sUAS Teams</span></div>
+          <div class="alert-actions"><a href="https://github.com/redicop/redicop.github.io/issues/new?title=Subscribe:+Aerial+Drone+Alerts&body=I+would+like+to+subscribe+to+aerial+and+drone+data+alerts.%0A%0AMy+area+of+interest:%0AMy+use+case:" target="_blank" class="alert-btn primary">&#128276; Subscribe</a><a href="data-sources.html" class="alert-btn outline">View Sources</a></div>
+        </div>
+
+        <div class="alert-cat">
+          <div class="alert-cat-header"><div class="alert-cat-icon" style="background:rgba(239,68,68,.12)">&#128680;</div><div><h3>Emergency Activations</h3></div><span class="cat-status live">Live</span></div>
+          <p>Immediate alerts for disaster charter activations, Copernicus EMS rapid mapping, and federal emergency imagery tasking. Critical for first responders.</p>
+          <div class="source-tags"><span class="source-tag">Disasters Charter</span><span class="source-tag">Copernicus EMS</span><span class="source-tag">FEMA</span><span class="source-tag">Maxar Open Data</span><span class="source-tag">Planet Disaster Data</span></div>
+          <div class="alert-actions"><a href="https://github.com/redicop/redicop.github.io/issues/new?title=Subscribe:+Emergency+Activation+Alerts&body=I+would+like+to+subscribe+to+emergency+activation+alerts.%0A%0AMy+role:%0AMy+organization:" target="_blank" class="alert-btn primary">&#128276; Subscribe</a><a href="data-sources.html" class="alert-btn outline">View Sources</a></div>
+        </div>
+
+        <div class="alert-cat">
+          <div class="alert-cat-header"><div class="alert-cat-icon" style="background:rgba(6,182,212,.12)">&#127777;&#65039;</div><div><h3>Weather &amp; Climate</h3></div><span class="cat-status live">Live</span></div>
+          <p>Geostationary and polar-orbiting weather satellites. Severe weather, tropical cyclones, fire weather, atmospheric conditions, and climate monitoring.</p>
+          <div class="source-tags"><span class="source-tag">GOES-16/18</span><span class="source-tag">JPSS/NOAA-21</span><span class="source-tag">Himawari</span><span class="source-tag">Meteosat</span><span class="source-tag">NWS</span><span class="source-tag">NHC</span></div>
+          <div class="alert-actions"><a href="https://github.com/redicop/redicop.github.io/issues/new?title=Subscribe:+Weather+Climate+Alerts&body=I+would+like+to+subscribe+to+weather+and+climate+data+alerts.%0A%0AMy+area+of+interest:%0AMy+use+case:" target="_blank" class="alert-btn primary">&#128276; Subscribe</a><a href="data-sources.html" class="alert-btn outline">View Sources</a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding:0 24px 80px">
+    <div class="section-header"><div class="section-label">Process</div><h2 class="section-title">How Alerts Work</h2></div>
+    <div class="how-it-works">
+      <div class="hiw-step"><div class="hiw-num">1</div><h4>Choose Your Data Types</h4><p>Select which categories of remote sensing data you want alerts for &mdash; satellite optical, SAR, LiDAR, aerial, or emergency activations.</p></div>
+      <div class="hiw-step"><div class="hiw-num">2</div><h4>Define Your Area of Interest</h4><p>Specify your geographic region of interest. Alerts are filtered to data relevant to your area using nltGIS.ai spatial intelligence.</p></div>
+      <div class="hiw-step"><div class="hiw-num">3</div><h4>Get Notified</h4><p>Receive GitHub notifications when new data is available, emergency charters are activated, or satellite passes are scheduled over your AOI.</p></div>
+      <div class="hiw-step"><div class="hiw-num">4</div><h4>Access &amp; Analyze</h4><p>Follow direct links to data portals, download imagery, and use nltGIS.ai to query and visualize data for your disaster response needs.</p></div>
+    </div>
+    <div class="powered-bar"><a href="https://nltgis.ai" target="_blank">Alert intelligence powered by <strong>nltGIS.ai</strong> &mdash; 200+ authoritative datasets</a></div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>Stay Ahead of Disasters</h2>
+      <p>Join REDICOP to receive real-time data availability alerts and connect with the remote sensing disaster response community.</p>
+      <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="signup.html" class="btn btn-primary">Join Community &rarr;</a><a href="data-sources.html" class="btn btn-outline">Browse 75+ Data Sources</a></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="brand-text">REDI<span>COP</span></div><p>Remote Sensing in Disasters Community of Practice. Your gateway to disaster remote sensing data and community collaboration.</p></div>
+        <div class="footer-col"><h4>Community</h4><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html">News Feed</a><a href="alerts.html">Data Alerts</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html">Join Community</a></div>
+        <div class="footer-col"><h4>Co-Organizers</h4><a href="https://newlighttechnologies.com/" target="_blank">New Light Technologies</a><a href="https://www.ll.mit.edu/" target="_blank">MIT Lincoln Laboratory</a><a href="https://nltgis.ai" target="_blank">nltGIS.ai</a></div>
+        <div class="footer-col"><h4>Connect</h4><a href="https://github.com/redicop" target="_blank">GitHub</a><a href="mailto:info@redicop.org">Email Us</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span><div class="footer-badges"><span class="footer-badge">Open Community</span></div></div>
+    </div>
+  </footer>
+
+</body>
+</html>
