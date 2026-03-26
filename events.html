@@ -1,89 +1,856 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events | REDICOP</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events &amp; Conferences | REDICOP</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <nav class="site-nav">
-    <a href="index.html" class="nav-brand"><div class="brand-icon">RC</div><div class="brand-text">REDI<span>COP</span></div></a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="data-sources.html">Data Sources</a>
-      <a href="news.html">News Feed</a>
-      <a href="events.html" class="active">Events</a>
-      <a href="resources.html">Resources</a>
-      <a href="signup.html" class="nav-cta">Join Community &rarr;</a>
-    </div>
-  </nav>
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <div class="brand-icon">RC</div>
+    <div class="brand-text">REDI<span>COP</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="data-sources.html">Data Sources</a>
+    <a href="news.html">News Feed</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="events.html" class="active">Events</a>
+    <a href="resources.html">Resources</a>
+    <a href="signup.html" class="nav-cta">Join Community &rarr;</a>
+  </div>
+</nav>
 
-  <div class="page-header">
-    <div class="container">
-      <div class="section-label">Community</div>
-      <h1>Events &amp; Meetings</h1>
-      <p>REDICOP hosts quarterly virtual meetings featuring presentations from remote sensing experts, emergency managers, and technology providers.</p>
+<header class="page-header">
+  <div class="container">
+    <div class="section-label">Community Calendar</div>
+    <h1>Events &amp; Conferences</h1>
+    <p>REDICOP community meetings, industry conferences, federal webinars, and satellite launches relevant to the remote sensing and disaster management community.</p>
+  </div>
+</header>
+
+<!-- FILTERS -->
+<section style="padding: 0 0 20px; margin-top: -40px;">
+  <div class="container">
+    <div class="event-filters">
+      <button class="filter-btn active" onclick="filterEvents('all')">All Events</button>
+      <button class="filter-btn" onclick="filterEvents('redicop')">REDICOP</button>
+      <button class="filter-btn" onclick="filterEvents('conference')">Conferences</button>
+      <button class="filter-btn" onclick="filterEvents('satellite')">Satellite &amp; Launch</button>
+      <button class="filter-btn" onclick="filterEvents('disaster')">Disaster &amp; EM</button>
+      <button class="filter-btn" onclick="filterEvents('webinar')">Webinars &amp; Seminars</button>
     </div>
   </div>
+</section>
 
-  <section class="container" style="padding-top:0">
-    <div class="section-header"><div class="section-label">2025</div><h2 class="section-title">Upcoming Events</h2></div>
-    <div class="event-card">
-      <div class="event-date"><div class="month">Jul</div><div class="day">10</div></div>
-      <div class="event-info"><h3>Preparing for the 2025 Hurricane Season</h3><div class="event-meta"><span>&#128338; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual (Zoom)</span></div></div>
-      <div class="event-action"><span class="event-tag tag-upcoming">Upcoming</span></div>
+<!-- ═══════════════════ UPCOMING EVENTS ═══════════════════ -->
+<section style="padding-top: 20px;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Upcoming</div>
+      <h2 class="section-title">2025 &ndash; 2026 Events</h2>
     </div>
-    <div class="event-card">
-      <div class="event-date"><div class="month">Oct</div><div class="day">TBD</div></div>
-      <div class="event-info"><h3>Fall 2025 Meeting &mdash; Topic TBD</h3><div class="event-meta"><span>&#128338; Time TBD</span><span>&#128187; Virtual</span></div></div>
-      <div class="event-action"><span class="event-tag tag-upcoming">Planned</span></div>
-    </div>
-  </section>
 
-  <section class="container" style="padding-bottom:100px">
-    <div class="section-header"><div class="section-label">Archive</div><h2 class="section-title">Past Events</h2></div>
-    <div class="event-card">
-      <div class="event-date"><div class="month">Apr</div><div class="day">15</div></div>
-      <div class="event-info"><h3>Post-Wildfire Assessment with SAR Data</h3><div class="event-meta"><span>&#128338; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 145 attendees</span></div></div>
-      <div class="event-action"><span class="event-tag tag-past">Past</span></div>
-    </div>
-    <div class="event-card">
-      <div class="event-date"><div class="month">Jan</div><div class="day">22</div></div>
-      <div class="event-info"><h3>AI-Driven Flood Mapping: Lessons from 2024</h3><div class="event-meta"><span>&#128338; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 178 attendees</span></div></div>
-      <div class="event-action"><span class="event-tag tag-past">Past</span></div>
-    </div>
-    <div class="event-card">
-      <div class="event-date"><div class="month">Oct</div><div class="day">17</div></div>
-      <div class="event-info"><h3>Hurricane Milton Response: Remote Sensing After-Action Review</h3><div class="event-meta"><span>&#128338; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 210 attendees</span></div></div>
-      <div class="event-action"><span class="event-tag tag-past">2024</span></div>
-    </div>
-    <div class="event-card">
-      <div class="event-date"><div class="month">Jul</div><div class="day">11</div></div>
-      <div class="event-info"><h3>Preparing for the 2024 Hurricane Season</h3><div class="event-meta"><span>&#128338; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 192 attendees</span></div></div>
-      <div class="event-action"><span class="event-tag tag-past">2024</span></div>
-    </div>
-    <div class="event-card">
-      <div class="event-date"><div class="month">Apr</div><div class="day">18</div></div>
-      <div class="event-info"><h3>Commercial Satellite Imagery for Disaster Response</h3><div class="event-meta"><span>&#128338; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 160 attendees</span></div></div>
-      <div class="event-action"><span class="event-tag tag-past">2024</span></div>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><div class="brand-text">REDI<span>COP</span></div><p>Remote Sensing in Disasters Community of Practice. Your gateway to disaster remote sensing data and community collaboration.</p></div>
-        <div class="footer-col"><h4>Community</h4><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html">News Feed</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html">Join Community</a></div>
-        <div class="footer-col"><h4>Co-Organizers</h4><a href="https://newlighttechnologies.com/" target="_blank">New Light Technologies</a><a href="https://www.ll.mit.edu/" target="_blank">MIT Lincoln Laboratory</a><a href="https://nltgis.ai" target="_blank">nltGIS.ai</a></div>
-        <div class="footer-col"><h4>Connect</h4><a href="https://github.com/redicop" target="_blank">GitHub</a><a href="mailto:info@redicop.org">Email Us</a></div>
+    <!-- ── REDICOP Q3 Meeting ── -->
+    <div class="event-card-enhanced" data-category="redicop webinar">
+      <div class="event-card-main" onclick="showPopup('redicop-q3')">
+        <div class="event-date">
+          <div class="month">Jul</div>
+          <div class="day">10</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">REDICOP Community Meeting</div>
+          <h3>Preparing for the 2025 Hurricane Season: Remote Sensing Readiness</h3>
+          <div class="event-desc-brief">Quarterly virtual meeting covering pre-season satellite tasking protocols, SAR baseline acquisition strategies, and coordination with NWS/NHC for the 2025 Atlantic hurricane season.</div>
+          <div class="event-meta">
+            <span>&#128339; 1:00 &ndash; 2:00 PM ET</span>
+            <span>&#128187; Virtual (Zoom)</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag disaster">Disaster</span>
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag sar">SAR</span>
+            <span class="e-tag free">Free</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
       </div>
-      <div class="footer-bottom"><span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span><div class="footer-badges"><span class="footer-badge">Open Community</span></div></div>
     </div>
-  </footer>
+
+    <!-- ── NOAA Satellite Conference ── -->
+    <div class="event-card-enhanced" data-category="satellite conference government">
+      <div class="event-card-main" onclick="showPopup('noaa-satellite-2025')">
+        <div class="event-date">
+          <div class="month">Sep</div>
+          <div class="day">21</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">NASA / NOAA</div>
+          <h3>NOAA GeoXO &amp; GOES-U Pre-Launch Briefings</h3>
+          <div class="event-desc-brief">NASA and NOAA pre-launch news conferences covering the next-generation Geostationary Extended Observations (GeoXO) program and GOES-U mission updates for advanced weather and environmental monitoring.</div>
+          <div class="event-meta">
+            <span>&#128339; Sep 21, 2025</span>
+            <span>&#128205; Kennedy Space Center / Virtual</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag government">Government</span>
+            <span class="e-tag climate">Climate</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NOAA Science Seminars ── -->
+    <div class="event-card-enhanced" data-category="webinar satellite government">
+      <div class="event-card-main" onclick="showPopup('noaa-seminars-2025')">
+        <div class="event-date">
+          <div class="month">Oct</div>
+          <div class="day">-</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">NOAA / NESDIS STAR</div>
+          <h3>2025 NOAA Science Seminars Series</h3>
+          <div class="event-desc-brief">Ongoing seminar series covering remote sensing research at NOAA STAR including wildfire detection via satellite, Arctic greenhouse gas emissions monitoring, and ocean color algorithm development.</div>
+          <div class="event-meta">
+            <span>&#128339; Monthly through Dec 2025</span>
+            <span>&#128187; Virtual</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag climate">Climate</span>
+            <span class="e-tag webinar">Webinar</span>
+            <span class="e-tag free">Free</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Ongoing</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REDICOP Q4 Meeting ── -->
+    <div class="event-card-enhanced" data-category="redicop webinar">
+      <div class="event-card-main" onclick="showPopup('redicop-q4')">
+        <div class="event-date">
+          <div class="month">Oct</div>
+          <div class="day">TBD</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">REDICOP Community Meeting</div>
+          <h3>Fall 2025 Meeting &mdash; Post-Hurricane Season Analysis</h3>
+          <div class="event-desc-brief">Quarterly meeting reviewing 2025 hurricane season remote sensing activations, damage assessment methodologies, and lessons learned from SAR, optical, and LiDAR deployments.</div>
+          <div class="event-meta">
+            <span>&#128339; Time TBD</span>
+            <span>&#128187; Virtual</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag disaster">Disaster</span>
+            <span class="e-tag sar">SAR</span>
+            <span class="e-tag lidar">LiDAR</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-planned">Planned</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AGU Fall 2025 ── -->
+    <div class="event-card-enhanced" data-category="conference satellite disaster">
+      <div class="event-card-main" onclick="showPopup('agu-2025')">
+        <div class="event-date">
+          <div class="month">Dec</div>
+          <div class="day">15</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">American Geophysical Union (AGU)</div>
+          <h3>AGU Fall Meeting 2025</h3>
+          <div class="event-desc-brief">The world's largest Earth and space science conference, featuring 25,000+ attendees, 1,800+ sessions on remote sensing, natural hazards, geodesy, climate science, and geospatial AI applications.</div>
+          <div class="event-meta">
+            <span>&#128339; Dec 15 &ndash; 19, 2025</span>
+            <span>&#128205; Washington, D.C.</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag disaster">Disaster</span>
+            <span class="e-tag ai">AI/ML</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ 2026 DIVIDER ═══ -->
+    <div class="year-divider">
+      <span class="year-label">2026</span>
+      <span class="year-line"></span>
+    </div>
+
+    <!-- ── ASPRS / Geo Week 2026 ── -->
+    <div class="event-card-enhanced" data-category="conference satellite lidar">
+      <div class="event-card-main" onclick="showPopup('asprs-geoweek-2026')">
+        <div class="event-date">
+          <div class="month">Feb</div>
+          <div class="day">16</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">ASPRS / Geo Week</div>
+          <h3>2026 ASPRS Annual Conference at Geo Week</h3>
+          <div class="event-desc-brief">Premier geospatial industry event combining ASPRS photogrammetry, LiDAR, UAS mapping, and remote sensing workshops with the broader Geo Week exhibition featuring 250+ exhibitors and 4,000+ professionals.</div>
+          <div class="event-meta">
+            <span>&#128339; Feb 16 &ndash; 18, 2026</span>
+            <span>&#128205; Denver, CO &mdash; Colorado Convention Center</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag lidar">LiDAR</span>
+            <span class="e-tag satellite">Satellite</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LPSC 2026 ── -->
+    <div class="event-card-enhanced" data-category="conference satellite government">
+      <div class="event-card-main" onclick="showPopup('lpsc-2026')">
+        <div class="event-date">
+          <div class="month">Mar</div>
+          <div class="day">16</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">Lunar and Planetary Institute / NASA</div>
+          <h3>57th Lunar and Planetary Science Conference (LPSC)</h3>
+          <div class="event-desc-brief">Annual conference presenting the latest results in planetary science and remote sensing, including orbital imaging of planetary surfaces, spectroscopy, radar sounding, and LiDAR altimetry applications.</div>
+          <div class="event-meta">
+            <span>&#128339; Mar 16 &ndash; 20, 2026</span>
+            <span>&#128205; The Woodlands, TX &amp; Virtual</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag government">Government</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SATShow 2026 ── -->
+    <div class="event-card-enhanced" data-category="conference satellite">
+      <div class="event-card-main" onclick="showPopup('satshow-2026')">
+        <div class="event-date">
+          <div class="month">Mar</div>
+          <div class="day">23</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">Via Satellite / Access Intelligence</div>
+          <h3>SATShow Week (SATELLITE x GovMilSpace)</h3>
+          <div class="event-desc-brief">Major satellite industry event combining the SATELLITE Conference with government and military space sessions. Covers EO constellation updates, SAR tasking, space-based SIGINT, and commercial data services for disaster response.</div>
+          <div class="event-meta">
+            <span>&#128339; Mar 23 &ndash; 26, 2026</span>
+            <span>&#128205; Washington, D.C. &mdash; Convention Center</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag conference">Conference</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 41st Space Symposium ── -->
+    <div class="event-card-enhanced" data-category="conference satellite government">
+      <div class="event-card-main" onclick="showPopup('space-symposium-2026')">
+        <div class="event-date">
+          <div class="month">Apr</div>
+          <div class="day">13</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">Space Foundation</div>
+          <h3>41st Space Symposium</h3>
+          <div class="event-desc-brief">Premier global space event bringing together 15,000+ attendees from civil, commercial, and national security space sectors. Features EO satellite program updates from NASA, NOAA, NGA, and commercial providers.</div>
+          <div class="event-meta">
+            <span>&#128339; Apr 13 &ndash; 16, 2026</span>
+            <span>&#128205; Colorado Springs, CO &mdash; The Broadmoor</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag government">Government</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ISPRS Remote Sensing Conference ── -->
+    <div class="event-card-enhanced" data-category="conference satellite">
+      <div class="event-card-main" onclick="showPopup('isprs-rsenv-2026')">
+        <div class="event-date">
+          <div class="month">Apr</div>
+          <div class="day">27</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">ISPRS (International Society for Photogrammetry and Remote Sensing)</div>
+          <h3>12th International Conference on Remote Sensing and Geoinformation of Environment</h3>
+          <div class="event-desc-brief">ISPRS-sponsored conference covering Earth observation, environmental monitoring, precision agriculture, change detection, and multi-sensor data fusion techniques using satellite and aerial platforms.</div>
+          <div class="event-meta">
+            <span>&#128339; Apr 27 &ndash; 29, 2026</span>
+            <span>&#128205; Paphos, Cyprus</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag climate">Environmental</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── JpGU-AGU Joint 2026 ── -->
+    <div class="event-card-enhanced" data-category="conference satellite disaster">
+      <div class="event-card-main" onclick="showPopup('jpgu-agu-2026')">
+        <div class="event-date">
+          <div class="month">May</div>
+          <div class="day">24</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">JpGU / AGU Joint Meeting</div>
+          <h3>JpGU-AGU 2026 Joint Meeting</h3>
+          <div class="event-desc-brief">Joint geoscience meeting bridging Asian and American research communities. Sessions cover InSAR deformation monitoring, tsunami early warning systems, volcanic hazard assessment via remote sensing, and earthquake damage mapping.</div>
+          <div class="event-meta">
+            <span>&#128339; May 24 &ndash; 29, 2026</span>
+            <span>&#128205; Chiba, Japan</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag disaster">Disaster</span>
+            <span class="e-tag sar">InSAR</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EM Higher Education Colloquium ── -->
+    <div class="event-card-enhanced" data-category="disaster conference">
+      <div class="event-card-main" onclick="showPopup('em-colloquium-2026')">
+        <div class="event-date">
+          <div class="month">Jun</div>
+          <div class="day">3</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">IAEM / FEMA Emergency Management Institute</div>
+          <h3>2026 Emergency Management Higher Education Colloquium</h3>
+          <div class="event-desc-brief">Annual colloquium advancing emergency management education and research. Covers integration of remote sensing and geospatial technologies into EM curricula, AI-powered situational awareness, and community resilience assessment.</div>
+          <div class="event-meta">
+            <span>&#128339; Jun 3 &ndash; 4, 2026</span>
+            <span>&#128205; Emmitsburg, MD &mdash; National Emergency Training Center</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag disaster">Disaster/EM</span>
+            <span class="e-tag government">Government</span>
+            <span class="e-tag conference">Conference</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── IGARSS 2026 ── -->
+    <div class="event-card-enhanced" data-category="conference satellite sar disaster">
+      <div class="event-card-main" onclick="showPopup('igarss-2026')">
+        <div class="event-date">
+          <div class="month">Aug</div>
+          <div class="day">9</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">IEEE Geoscience and Remote Sensing Society (GRSS)</div>
+          <h3>IGARSS 2026 &mdash; IEEE International Geoscience and Remote Sensing Symposium</h3>
+          <div class="event-desc-brief">The premier annual remote sensing conference. 3,000+ attendees presenting cutting-edge research in SAR/InSAR, hyperspectral imaging, LiDAR, microwave radiometry, AI for EO, and disaster response applications. Features NASA, ESA, JAXA agency sessions.</div>
+          <div class="event-meta">
+            <span>&#128339; Aug 9 &ndash; 14, 2026</span>
+            <span>&#128205; Washington, D.C.</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag sar">SAR</span>
+            <span class="e-tag ai">AI/ML</span>
+            <span class="e-tag disaster">Disaster</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SmallSat Conference ── -->
+    <div class="event-card-enhanced" data-category="conference satellite">
+      <div class="event-card-main" onclick="showPopup('smallsat-2026')">
+        <div class="event-date">
+          <div class="month">Aug</div>
+          <div class="day">23</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">Utah State University / AIAA</div>
+          <h3>40th Annual Small Satellite Conference</h3>
+          <div class="event-desc-brief">World's premier conference on small satellite missions including CubeSat EO constellations, miniaturized SAR systems, on-orbit AI processing, and rapid-revisit disaster monitoring architectures.</div>
+          <div class="event-meta">
+            <span>&#128339; Aug 23 &ndash; 26, 2026</span>
+            <span>&#128205; Logan, UT &mdash; Utah State University</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag ai">AI/ML</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Disasters Expo Houston ── -->
+    <div class="event-card-enhanced" data-category="disaster conference">
+      <div class="event-card-main" onclick="showPopup('disasters-expo-2026')">
+        <div class="event-date">
+          <div class="month">Oct</div>
+          <div class="day">14</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">Natural Disasters Expo USA</div>
+          <h3>Disasters Expo Houston 2026</h3>
+          <div class="event-desc-brief">Fifth annual disaster preparedness, response, and recovery expo. Covers geospatial technology for situational awareness, drone-based damage assessment, satellite imagery for insurance, and community resilience planning.</div>
+          <div class="event-meta">
+            <span>&#128339; Oct 14 &ndash; 15, 2026</span>
+            <span>&#128205; Houston, TX</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag disaster">Disaster</span>
+            <span class="e-tag conference">Expo</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-upcoming">Upcoming</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AI + DRR Conference ── -->
+    <div class="event-card-enhanced" data-category="disaster ai conference">
+      <div class="event-card-main" onclick="showPopup('ai-drr-2026')">
+        <div class="event-date">
+          <div class="month">2026</div>
+          <div class="day">TBD</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">TecHive Association / PreventionWeb</div>
+          <h3>AI + Disaster Risk Reduction (DRR) Conference 2026</h3>
+          <div class="event-desc-brief">Global conference exploring how AI strengthens disaster preparedness and resilience. Topics include ML-driven flood prediction, satellite-based early warning systems, NLP for social media disaster detection, and AI damage assessment from aerial/satellite imagery.</div>
+          <div class="event-meta">
+            <span>&#128339; 2026 &mdash; Dates TBD</span>
+            <span>&#128205; Location TBD</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag ai">AI/ML</span>
+            <span class="e-tag disaster">Disaster</span>
+            <span class="e-tag conference">Conference</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-planned">Planned</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AGU Fall 2026 ── -->
+    <div class="event-card-enhanced" data-category="conference satellite disaster">
+      <div class="event-card-main" onclick="showPopup('agu-2026')">
+        <div class="event-date">
+          <div class="month">Dec</div>
+          <div class="day">TBD</div>
+        </div>
+        <div class="event-info">
+          <div class="event-org">American Geophysical Union (AGU)</div>
+          <h3>AGU Fall Meeting 2026</h3>
+          <div class="event-desc-brief">Annual AGU Fall Meeting returning to San Francisco. NASA and NOAA town halls, Natural Hazards sessions, remote sensing instrumentation, and Earth system modeling presentations.</div>
+          <div class="event-meta">
+            <span>&#128339; Dec 2026</span>
+            <span>&#128205; San Francisco, CA</span>
+          </div>
+          <div class="event-tags">
+            <span class="e-tag conference">Conference</span>
+            <span class="e-tag satellite">Satellite</span>
+            <span class="e-tag climate">Climate</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-tag tag-planned">Planned</span>
+          <span class="event-detail-btn">Details &#8594;</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ PAST EVENTS ═══════════════════ -->
+<section style="padding-top: 40px;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Archive</div>
+      <h2 class="section-title">Past Events</h2>
+    </div>
+
+    <div class="event-card-enhanced" data-category="redicop webinar">
+      <div class="event-card-main" onclick="showPopup('redicop-apr2025')">
+        <div class="event-date"><div class="month">Apr</div><div class="day">15</div></div>
+        <div class="event-info">
+          <div class="event-org">REDICOP Community Meeting</div>
+          <h3>Post-Wildfire Assessment with SAR Data</h3>
+          <div class="event-desc-brief">Demonstrated SAR-based burn severity mapping using Sentinel-1 and ALOS-2 PALSAR-2 data. Covered coherence change detection, backscatter analysis, and integration with dNBR from Landsat/Sentinel-2 optical imagery.</div>
+          <div class="event-meta"><span>&#128339; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 145 attendees</span></div>
+          <div class="event-tags"><span class="e-tag sar">SAR</span><span class="e-tag disaster">Wildfire</span></div>
+        </div>
+        <div class="event-actions"><span class="event-tag tag-past">Past</span><span class="event-detail-btn">Details &#8594;</span></div>
+      </div>
+    </div>
+
+    <div class="event-card-enhanced" data-category="redicop webinar">
+      <div class="event-card-main" onclick="showPopup('redicop-jan2025')">
+        <div class="event-date"><div class="month">Jan</div><div class="day">22</div></div>
+        <div class="event-info">
+          <div class="event-org">REDICOP Community Meeting</div>
+          <h3>AI-Driven Flood Mapping: Lessons from 2024</h3>
+          <div class="event-desc-brief">Reviewed AI/ML approaches to flood extent mapping using SAR and optical data from Hurricane Helene and Milton responses. Presented U-Net and transformer architectures for water body segmentation.</div>
+          <div class="event-meta"><span>&#128339; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 178 attendees</span></div>
+          <div class="event-tags"><span class="e-tag ai">AI/ML</span><span class="e-tag disaster">Flood</span><span class="e-tag sar">SAR</span></div>
+        </div>
+        <div class="event-actions"><span class="event-tag tag-past">Past</span><span class="event-detail-btn">Details &#8594;</span></div>
+      </div>
+    </div>
+
+    <div class="year-divider"><span class="year-label">2024</span><span class="year-line"></span></div>
+
+    <div class="event-card-enhanced" data-category="redicop webinar">
+      <div class="event-card-main" onclick="showPopup('redicop-oct2024')">
+        <div class="event-date"><div class="month">Oct</div><div class="day">17</div></div>
+        <div class="event-info">
+          <div class="event-org">REDICOP Community Meeting</div>
+          <h3>Hurricane Milton Response: Remote Sensing After-Action Review</h3>
+          <div class="event-desc-brief">After-action review of remote sensing activations during Hurricane Milton including NOAA aerial survey coordination, Maxar open data releases, Copernicus EMS activations, and Civil Air Patrol imagery collection.</div>
+          <div class="event-meta"><span>&#128339; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 210 attendees</span></div>
+          <div class="event-tags"><span class="e-tag disaster">Hurricane</span><span class="e-tag satellite">Satellite</span></div>
+        </div>
+        <div class="event-actions"><span class="event-tag tag-past">Past</span><span class="event-detail-btn">Details &#8594;</span></div>
+      </div>
+    </div>
+
+    <div class="event-card-enhanced" data-category="redicop webinar">
+      <div class="event-card-main" onclick="showPopup('redicop-jul2024')">
+        <div class="event-date"><div class="month">Jul</div><div class="day">11</div></div>
+        <div class="event-info">
+          <div class="event-org">REDICOP Community Meeting</div>
+          <h3>Preparing for the 2024 Hurricane Season</h3>
+          <div class="event-desc-brief">Pre-season briefing covering NHC 2024 outlook, commercial SAR tasking agreements, NOAA satellite status, and coordination protocols with the International Charter: Space and Major Disasters.</div>
+          <div class="event-meta"><span>&#128339; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 192 attendees</span></div>
+          <div class="event-tags"><span class="e-tag disaster">Hurricane</span><span class="e-tag satellite">Satellite</span><span class="e-tag sar">SAR</span></div>
+        </div>
+        <div class="event-actions"><span class="event-tag tag-past">Past</span><span class="event-detail-btn">Details &#8594;</span></div>
+      </div>
+    </div>
+
+    <div class="event-card-enhanced" data-category="redicop webinar">
+      <div class="event-card-main" onclick="showPopup('redicop-apr2024')">
+        <div class="event-date"><div class="month">Apr</div><div class="day">18</div></div>
+        <div class="event-info">
+          <div class="event-org">REDICOP Community Meeting</div>
+          <h3>Commercial Satellite Imagery for Disaster Response</h3>
+          <div class="event-desc-brief">Overview of commercial EO providers (Maxar, Planet, Capella Space, ICEYE) and their disaster response programs. Covered tasking procedures, licensing models, open data policies, and resolution/latency tradeoffs.</div>
+          <div class="event-meta"><span>&#128339; 1:00 &ndash; 2:00 PM ET</span><span>&#128187; Virtual</span><span>&#128101; 160 attendees</span></div>
+          <div class="event-tags"><span class="e-tag satellite">Satellite</span><span class="e-tag disaster">Disaster</span></div>
+        </div>
+        <div class="event-actions"><span class="event-tag tag-past">Past</span><span class="event-detail-btn">Details &#8594;</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Never Miss an Event</h2>
+      <p>Watch our GitHub repo to get notified about new REDICOP events, or subscribe to alerts for conferences in your field.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/redicop/redicop.github.io" target="_blank" class="btn btn-primary">&#9733; Watch on GitHub</a>
+        <a href="alerts.html" class="btn btn-outline">&#128276; Set Up Alerts</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ POPUP OVERLAY ═══════════════════ -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
+<div class="info-popup" id="infoPopup">
+  <div class="popup-header">
+    <h3><span class="popup-icon" id="popupIcon"></span> <span id="popupTitle"></span></h3>
+    <button class="popup-close" onclick="closePopup()">&times;</button>
+  </div>
+  <div class="popup-body" id="popupBody"></div>
+  <div class="popup-footer" id="popupFooter"></div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-text">REDI<span>COP</span></div>
+        <p>Remote Sensing in Disasters Community of Practice. Your gateway to disaster remote sensing data and community collaboration.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="index.html">Home</a>
+        <a href="data-sources.html">Data Sources</a>
+        <a href="news.html">News Feed</a>
+        <a href="alerts.html">Alerts</a>
+        <a href="events.html">Events</a>
+        <a href="resources.html">Resources</a>
+        <a href="signup.html">Join Community</a>
+      </div>
+      <div class="footer-col">
+        <h4>Co-Organizers</h4>
+        <a href="https://www.newlight.com" target="_blank">New Light Technologies</a>
+        <a href="https://www.ll.mit.edu" target="_blank">MIT Lincoln Laboratory</a>
+        <a href="https://nltgis.ai" target="_blank">nltGIS.ai</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://github.com/redicop" target="_blank">GitHub</a>
+        <a href="mailto:info@redicop.org">Email Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span>
+      <div class="footer-badges">
+        <span class="footer-badge">Open Community</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════
+// POPUP DATA - Detailed event information
+// ══════════════════════════════════════════════════
+const popupData = {
+  'redicop-q3': {
+    icon: '&#127790;', title: 'REDICOP Q3: Hurricane Season Readiness',
+    body: '<p>This quarterly REDICOP meeting focuses on remote sensing readiness for the 2025 Atlantic hurricane season. The session will cover pre-positioning of satellite tasking requests, establishing SAR baseline imagery for coastal areas, and coordination protocols with NOAA\'s National Hurricane Center (NHC) and National Weather Service (NWS).</p><p>Topics include Sentinel-1 and commercial SAR (ICEYE, Capella Space) pre-event baseline acquisition, Maxar/Planet optical tasking queues, NOAA aerial survey coordination through the National Geodetic Survey (NGS), and Civil Air Patrol (CAP) imagery collection workflows.</p><div class="popup-meta"><span class="popup-tag">&#128339; Jul 10, 2025 &bull; 1:00-2:00 PM ET</span><span class="popup-tag">&#128187; Virtual (Zoom)</span><span class="popup-tag">Free</span></div>',
+    footer: '<a href="july-2025.html" class="btn btn-primary">Meeting Details</a><a href="signup.html" class="btn btn-outline">Join Community</a>'
+  },
+  'noaa-satellite-2025': {
+    icon: '&#128752;', title: 'GeoXO & GOES-U Briefings',
+    body: '<p>NASA and NOAA will hold pre-launch briefings for the next-generation Geostationary Extended Observations (GeoXO) satellite system. GeoXO will provide advanced weather, ocean, and environmental observations from geostationary orbit, succeeding the current GOES-R series.</p><p>The GeoXO program includes the GeoXO Imager (GXI) for multispectral weather imaging, the GeoXO Sounder (GXS) for atmospheric profiling, the GeoXO Lightning Mapper (LM), and the Ocean Color (OC) instrument &mdash; the first ocean color sensor on a geostationary platform.</p><p>GOES-U (launched June 2024, now GOES-19) completed on-orbit testing and entered operational service. These briefings will cover early science results and data product validation status.</p><div class="popup-meta"><span class="popup-tag">NASA / NOAA</span><span class="popup-tag">&#128205; Kennedy Space Center</span><span class="popup-tag">Geostationary EO</span></div>',
+    footer: '<a href="https://www.nesdis.noaa.gov/next-generation/geostationary-extended-observations" target="_blank" class="btn btn-primary">GeoXO Program &#8599;</a><a href="https://www.nesdis.noaa.gov/current-satellite-missions/currently-flying/goes" target="_blank" class="btn btn-outline">GOES Series &#8599;</a><span class="popup-source">Source: NOAA/NESDIS</span>'
+  },
+  'noaa-seminars-2025': {
+    icon: '&#127891;', title: 'NOAA STAR Science Seminars 2025',
+    body: '<p>The NOAA Center for Satellite Applications and Research (STAR) hosts ongoing science seminars covering cutting-edge remote sensing research. The 2025 series includes talks on improving wildfire detection through new satellite technology, Arctic remote sensing and greenhouse gas monitoring from thermokarst landscapes, and ocean color algorithm development.</p><p>STAR scientists present research using data from NOAA-20/21 (VIIRS), GOES-16/17/18/19, and international partner missions. These seminars are free and open to the remote sensing community.</p><div class="popup-meta"><span class="popup-tag">NOAA/NESDIS STAR</span><span class="popup-tag">Monthly through Dec 2025</span><span class="popup-tag">Free &amp; Virtual</span></div>',
+    footer: '<a href="https://www.star.nesdis.noaa.gov/star/NOAAScienceSeminars.php" target="_blank" class="btn btn-primary">Seminar Schedule &#8599;</a><span class="popup-source">Source: NOAA STAR</span>'
+  },
+  'redicop-q4': {
+    icon: '&#127786;', title: 'REDICOP Q4: Post-Hurricane Analysis',
+    body: '<p>Fall 2025 meeting dedicated to reviewing remote sensing activations during the 2025 hurricane season. The session will analyze damage assessment workflows using pre/post-event SAR coherence, optical change detection, and LiDAR point cloud differencing for structural damage classification.</p><p>Presenters will share case studies from actual 2025 events, including International Charter activations, Copernicus Emergency Management Service (EMS) rapid mapping products, and USGS Hazards Data Distribution System (HDDS) imagery collections.</p><div class="popup-meta"><span class="popup-tag">&#128339; Oct 2025 &bull; TBD</span><span class="popup-tag">&#128187; Virtual</span></div>',
+    footer: '<a href="signup.html" class="btn btn-primary">Get Notified</a>'
+  },
+  'agu-2025': {
+    icon: '&#127758;', title: 'AGU Fall Meeting 2025',
+    body: '<p>The American Geophysical Union (AGU) Fall Meeting is the largest international Earth and space science conference, attracting 25,000+ attendees with 1,800+ scientific sessions. Key sessions for the REDICOP community include Natural Hazards (NH), Geodesy (G), and Global Environmental Change (GC).</p><p>NASA will host multiple town halls covering Earth System Observatory updates (NISAR, PACE, TEMPO), Landsat Next development, and the Commercial Smallsat Data Acquisition (CSDA) program. NOAA sessions will cover JPSS/GOES science results and GeoXO mission planning.</p><p>Abstract submission typically closes in July. Early career researchers can apply for travel grants through AGU and NASA.</p><div class="popup-meta"><span class="popup-tag">25,000+ Attendees</span><span class="popup-tag">1,800+ Sessions</span><span class="popup-tag">&#128205; Washington, D.C.</span></div>',
+    footer: '<a href="https://www.agu.org/annual-meeting" target="_blank" class="btn btn-primary">AGU 2025 &#8599;</a><span class="popup-source">Source: AGU</span>'
+  },
+  'asprs-geoweek-2026': {
+    icon: '&#128506;', title: 'ASPRS at Geo Week 2026',
+    body: '<p>The American Society for Photogrammetry and Remote Sensing (ASPRS) Annual Conference is co-located with Geo Week, bringing together professionals in photogrammetry, LiDAR, UAS mapping, remote sensing, and geospatial technology.</p><p>Technical tracks include: aerial triangulation and bundle adjustment; LiDAR point cloud classification and feature extraction; UAS photogrammetry for corridor mapping; satellite image processing and orthorectification; machine learning for land cover classification; and bathymetric LiDAR applications.</p><p>The ASPRS program includes certification workshops (CP, CMS, GISP), hands-on tutorials, and student competitions. The broader Geo Week exhibition features 250+ exhibitors showcasing the latest sensors, software, and platforms.</p><div class="popup-meta"><span class="popup-tag">ASPRS</span><span class="popup-tag">Geo Week</span><span class="popup-tag">&#128205; Denver, CO</span><span class="popup-tag">4,000+ Attendees</span></div>',
+    footer: '<a href="https://www.geo-week.com" target="_blank" class="btn btn-primary">Geo Week 2026 &#8599;</a><a href="https://www.asprs.org" target="_blank" class="btn btn-outline">ASPRS &#8599;</a><span class="popup-source">Source: ASPRS/Geo Week</span>'
+  },
+  'lpsc-2026': {
+    icon: '&#127765;', title: '57th LPSC',
+    body: '<p>The Lunar and Planetary Science Conference (LPSC) is the premier conference for planetary science research, including remote sensing of planetary surfaces. Organized by the Lunar and Planetary Institute (LPI) with NASA co-sponsorship.</p><p>Remote sensing topics include: orbital imaging spectrometry (CRISM, M3); radar sounding of subsurface ice; LiDAR altimetry (MOLA, LOLA); thermal emission spectroscopy; and InSAR for planetary deformation studies. The conference also covers Earth analog studies relevant to disaster geomorphology.</p><div class="popup-meta"><span class="popup-tag">LPI / NASA</span><span class="popup-tag">&#128205; The Woodlands, TX</span><span class="popup-tag">Hybrid Format</span></div>',
+    footer: '<a href="https://www.hou.usra.edu/meetings/lpsc2026/" target="_blank" class="btn btn-primary">LPSC 2026 &#8599;</a><span class="popup-source">Source: LPI/NASA</span>'
+  },
+  'satshow-2026': {
+    icon: '&#128225;', title: 'SATShow Week 2026',
+    body: '<p>SATShow Week combines the established SATELLITE Conference with the Government &amp; Military Space (GovMilSpace) sessions. This is a major industry event for the commercial satellite sector including Earth observation.</p><p>Key tracks for the REDICOP community: commercial EO constellation updates (Planet, Maxar, BlackSky, Satellogic); SAR mission briefings (Capella, ICEYE, Umbra); data analytics platforms; cloud-native geospatial processing; and government procurement of commercial satellite data for emergency response.</p><div class="popup-meta"><span class="popup-tag">&#128205; Washington, D.C.</span><span class="popup-tag">Satellite Industry</span><span class="popup-tag">Commercial EO</span></div>',
+    footer: '<a href="https://www.satshow.com" target="_blank" class="btn btn-primary">SATShow 2026 &#8599;</a><span class="popup-source">Source: Via Satellite</span>'
+  },
+  'space-symposium-2026': {
+    icon: '&#128640;', title: '41st Space Symposium',
+    body: '<p>The Space Symposium is the premier global space event organized by the Space Foundation, bringing together 15,000+ attendees from 40+ countries including civil, commercial, intelligence, and national security space sectors.</p><p>Relevant sessions include NASA Earth Science Division updates, NOAA satellite program briefings, NGA Foundation GEOINT activities, and commercial EO provider presentations. The exhibition features sensor manufacturers, launch providers, and geospatial analytics companies.</p><div class="popup-meta"><span class="popup-tag">Space Foundation</span><span class="popup-tag">&#128205; Colorado Springs, CO</span><span class="popup-tag">15,000+ Attendees</span></div>',
+    footer: '<a href="https://www.spacesymposium.org" target="_blank" class="btn btn-primary">Space Symposium &#8599;</a><span class="popup-source">Source: Space Foundation</span>'
+  },
+  'isprs-rsenv-2026': {
+    icon: '&#127757;', title: 'ISPRS Remote Sensing Conference',
+    body: '<p>The 12th International Conference on Remote Sensing and Geoinformation of the Environment, organized under the International Society for Photogrammetry and Remote Sensing (ISPRS), focuses on Earth observation and environmental monitoring applications.</p><p>Topics include multi-temporal change detection, precision agriculture from satellite data, urban heat island monitoring, coastal zone mapping, forest biomass estimation, and natural hazard risk assessment using multi-sensor fusion of optical, SAR, and thermal data.</p><div class="popup-meta"><span class="popup-tag">ISPRS</span><span class="popup-tag">&#128205; Paphos, Cyprus</span><span class="popup-tag">Environmental RS</span></div>',
+    footer: '<a href="https://www.isprs.org/calendar/2026" target="_blank" class="btn btn-primary">ISPRS Calendar &#8599;</a><span class="popup-source">Source: ISPRS</span>'
+  },
+  'jpgu-agu-2026': {
+    icon: '&#127759;', title: 'JpGU-AGU 2026 Joint Meeting',
+    body: '<p>Joint meeting between the Japan Geoscience Union (JpGU) and AGU, held biennially in Japan. This conference bridges Asian and American geoscience research communities with particular strength in seismology, volcanology, and natural hazards.</p><p>Key sessions for REDICOP: InSAR surface deformation monitoring (ALOS-2, ALOS-4 PALSAR-3); tsunami modeling and early warning integration with satellite altimetry; volcanic ash detection from geostationary satellites; earthquake damage assessment using SAR coherence change and optical imagery; and JAXA Earth observation program updates.</p><div class="popup-meta"><span class="popup-tag">JpGU / AGU</span><span class="popup-tag">&#128205; Chiba, Japan</span><span class="popup-tag">Asia-Pacific Focus</span></div>',
+    footer: '<a href="https://www.jpgu.org/meeting_e2026/" target="_blank" class="btn btn-primary">JpGU-AGU 2026 &#8599;</a><span class="popup-source">Source: JpGU</span>'
+  },
+  'em-colloquium-2026': {
+    icon: '&#128680;', title: 'EM Higher Education Colloquium 2026',
+    body: '<p>The Emergency Management Higher Education Colloquium, hosted by FEMA\'s Emergency Management Institute (EMI) at the National Emergency Training Center, brings together educators, researchers, and practitioners to advance EM education.</p><p>Sessions relevant to the remote sensing community include: integrating GIS and remote sensing into EM curricula; using satellite imagery for situational awareness training; drone operations for disaster assessment; AI-powered damage detection tools; and community resilience assessment using geospatial indicators.</p><p>Organized by the International Association of Emergency Managers (IAEM) in partnership with EMI.</p><div class="popup-meta"><span class="popup-tag">IAEM / FEMA EMI</span><span class="popup-tag">&#128205; Emmitsburg, MD</span><span class="popup-tag">Education Focus</span></div>',
+    footer: '<a href="https://www.iaem.org/Events/EM-Events" target="_blank" class="btn btn-primary">IAEM Events &#8599;</a><span class="popup-source">Source: IAEM</span>'
+  },
+  'igarss-2026': {
+    icon: '&#128752;', title: 'IGARSS 2026 &mdash; Washington, D.C.',
+    body: '<p>The IEEE International Geoscience and Remote Sensing Symposium (IGARSS) is THE premier annual conference for remote sensing science and technology. Organized by the IEEE Geoscience and Remote Sensing Society (GRSS), IGARSS 2026 returns to Washington, D.C.</p><p>The technical program covers: Synthetic Aperture Radar (SAR) and InSAR processing; hyperspectral image analysis; LiDAR point cloud processing; microwave radiometry; AI/ML for Earth observation; disaster monitoring and response; land use/land cover mapping; ocean and atmospheric remote sensing; and sensor calibration/validation.</p><p>Agency sessions from NASA, ESA, JAXA, CSA, DLR, and CNES provide updates on current and planned missions. Industry sessions cover commercial SAR, optical, and hyperspectral constellations.</p><p>Paper submission deadline typically in January 2026. Student paper competition and travel grants available.</p><div class="popup-meta"><span class="popup-tag">IEEE GRSS</span><span class="popup-tag">&#128205; Washington, D.C.</span><span class="popup-tag">3,000+ Attendees</span><span class="popup-tag">Premier RS Conference</span></div>',
+    footer: '<a href="https://2026.ieeeigarss.org" target="_blank" class="btn btn-primary">IGARSS 2026 &#8599;</a><a href="https://www.grss-ieee.org" target="_blank" class="btn btn-outline">IEEE GRSS &#8599;</a><span class="popup-source">Source: IEEE GRSS</span>'
+  },
+  'smallsat-2026': {
+    icon: '&#128752;', title: '40th Small Satellite Conference',
+    body: '<p>The Annual Small Satellite Conference at Utah State University is the world\'s premier event for small satellite missions. The 40th edition covers the latest in CubeSat and SmallSat technology for Earth observation.</p><p>Topics relevant to REDICOP: miniaturized SAR instruments for disaster monitoring; CubeSat constellations for rapid-revisit optical imaging; on-orbit AI/ML processing for real-time event detection; commercial small satellite data for emergency management; formation flying for interferometric measurements; and hosted payload concepts for NOAA/DoD.</p><div class="popup-meta"><span class="popup-tag">USU / AIAA</span><span class="popup-tag">&#128205; Logan, UT</span><span class="popup-tag">SmallSat Innovation</span></div>',
+    footer: '<a href="https://www.smallsat.org" target="_blank" class="btn btn-primary">SmallSat Conference &#8599;</a><span class="popup-source">Source: USU</span>'
+  },
+  'disasters-expo-2026': {
+    icon: '&#127786;', title: 'Disasters Expo Houston 2026',
+    body: '<p>The Natural Disasters Expo returns to Houston for its fifth year, focusing on disaster preparedness, response, and recovery. The expo brings together emergency managers, first responders, technology providers, and government agencies.</p><p>Exhibition tracks include: geospatial technology for situational awareness; UAS/drone operations for post-disaster assessment; satellite imagery for insurance and claims; IoT sensor networks for early warning; community resilience planning tools; and AI-powered damage classification from aerial and satellite imagery.</p><div class="popup-meta"><span class="popup-tag">&#128205; Houston, TX</span><span class="popup-tag">Disaster Technology Expo</span></div>',
+    footer: '<a href="https://www.disasterexpotexas.com" target="_blank" class="btn btn-primary">Disasters Expo &#8599;</a><span class="popup-source">Source: Disasters Expo</span>'
+  },
+  'ai-drr-2026': {
+    icon: '&#129302;', title: 'AI + Disaster Risk Reduction 2026',
+    body: '<p>The AI + Disaster Risk Reduction (DRR) Conference, hosted by TecHive Association, explores how artificial intelligence can strengthen disaster preparedness, early action, and long-term resilience.</p><p>Technical tracks include: machine learning for flood prediction using satellite precipitation and hydrological models; computer vision for building damage assessment from satellite and drone imagery; NLP for social media-based disaster detection; foundation models for Earth observation; and reinforcement learning for optimal resource allocation during response.</p><p>Listed on PreventionWeb (UNDRR platform), this conference brings together AI researchers, humanitarian organizations, and disaster management professionals.</p><div class="popup-meta"><span class="popup-tag">TecHive / PreventionWeb</span><span class="popup-tag">AI + Humanitarian</span></div>',
+    footer: '<a href="https://www.preventionweb.net" target="_blank" class="btn btn-primary">PreventionWeb &#8599;</a><span class="popup-source">Source: PreventionWeb/UNDRR</span>'
+  },
+  'agu-2026': {
+    icon: '&#127758;', title: 'AGU Fall Meeting 2026',
+    body: '<p>The AGU Fall Meeting 2026 returns to San Francisco, CA. As the world\'s largest Earth and space science gathering, it continues to be the essential venue for presenting remote sensing research and connecting with NASA, NOAA, USGS, and international space agency programs.</p><p>Details including abstract submission deadlines and session proposals will be announced in early 2026.</p><div class="popup-meta"><span class="popup-tag">AGU</span><span class="popup-tag">&#128205; San Francisco, CA</span><span class="popup-tag">Dec 2026</span></div>',
+    footer: '<a href="https://www.agu.org" target="_blank" class="btn btn-primary">AGU &#8599;</a><span class="popup-source">Source: AGU</span>'
+  },
+  'redicop-apr2025': {
+    icon: '&#128293;', title: 'Post-Wildfire Assessment with SAR',
+    body: '<p>This REDICOP meeting demonstrated SAR-based burn severity mapping techniques using Sentinel-1 C-band and ALOS-2 PALSAR-2 L-band data. Presentations covered coherence change detection (CCD) for identifying burned areas, backscatter coefficient analysis for vegetation loss quantification, and integration with optical-derived differenced Normalized Burn Ratio (dNBR) from Landsat 8/9 and Sentinel-2.</p><p>Case studies included the 2024 Park Fire (CA), Smokehouse Creek Fire (TX), and Jasper Fire (Alberta). Speakers from USGS EROS, Canadian Forest Service, and MIT Lincoln Laboratory.</p><div class="popup-meta"><span class="popup-tag">145 Attendees</span><span class="popup-tag">Apr 15, 2025</span><span class="popup-tag">Recording Available</span></div>',
+    footer: '<a href="resources.html" class="btn btn-outline">View Resources</a>'
+  },
+  'redicop-jan2025': {
+    icon: '&#127754;', title: 'AI-Driven Flood Mapping',
+    body: '<p>Reviewed machine learning approaches to flood extent mapping during the 2024 Atlantic hurricane season, focusing on Hurricanes Helene and Milton. Presentations covered U-Net convolutional neural network architectures for SAR-based water body segmentation, Vision Transformer (ViT) models for optical flood mapping, and ensemble methods combining SAR and optical predictions.</p><p>Training data sources discussed included Copernicus EMS activations, USGS flood event viewer ground truth, and Maxar Open Data products. Speakers from NLT, MIT LL, and university research partners.</p><div class="popup-meta"><span class="popup-tag">178 Attendees</span><span class="popup-tag">Jan 22, 2025</span><span class="popup-tag">Recording Available</span></div>',
+    footer: '<a href="resources.html" class="btn btn-outline">View Resources</a>'
+  },
+  'redicop-oct2024': {
+    icon: '&#127786;', title: 'Hurricane Milton After-Action Review',
+    body: '<p>After-action review of remote sensing activations during Hurricane Milton (Oct 2024). Covered NOAA National Geodetic Survey aerial imagery collection, Maxar Open Data satellite image releases, Copernicus EMS rapid mapping activations (EMSR-xxx), Civil Air Patrol imagery, and Planet tasking through the Disaster Data Program.</p><p>Discussion included lessons learned on data sharing protocols, turnaround times for damage assessment products, and coordination between federal (FEMA, USGS, NOAA), state, and commercial providers. 210 attendees from 45+ organizations.</p><div class="popup-meta"><span class="popup-tag">210 Attendees</span><span class="popup-tag">Oct 17, 2024</span></div>',
+    footer: '<a href="resources.html" class="btn btn-outline">View Resources</a>'
+  },
+  'redicop-jul2024': {
+    icon: '&#127790;', title: 'Hurricane Season 2024 Prep',
+    body: '<p>Pre-season briefing reviewing the NHC 2024 Atlantic hurricane season outlook (above-normal forecast), commercial SAR tasking pre-agreements with ICEYE and Capella Space, NOAA operational satellite status (GOES-16/17/18, NOAA-20/21), and International Charter: Space and Major Disasters activation procedures.</p><div class="popup-meta"><span class="popup-tag">192 Attendees</span><span class="popup-tag">Jul 11, 2024</span></div>',
+    footer: '<a href="resources.html" class="btn btn-outline">View Resources</a>'
+  },
+  'redicop-apr2024': {
+    icon: '&#128752;', title: 'Commercial Satellite Imagery for Disaster',
+    body: '<p>Overview of commercial Earth observation providers and their disaster response programs: Maxar (WorldView Legion, 30cm optical); Planet (SuperDove constellation, 3m daily); Capella Space (X-band SAR, 25cm spotlight); ICEYE (X-band SAR microsatellites, flood monitoring); BlackSky (high-revisit optical + analytics); and Satellogic (sub-meter multispectral).</p><p>Covered tasking procedures, open data policies during declared disasters, licensing models for government use, and resolution/revisit/latency tradeoffs for different disaster types.</p><div class="popup-meta"><span class="popup-tag">160 Attendees</span><span class="popup-tag">Apr 18, 2024</span></div>',
+    footer: '<a href="resources.html" class="btn btn-outline">View Resources</a>'
+  }
+};
+
+// ══════════════════════════════════════════════════
+// POPUP FUNCTIONS
+// ══════════════════════════════════════════════════
+function showPopup(id) {
+  const data = popupData[id];
+  if (!data) return;
+  document.getElementById('popupIcon').innerHTML = data.icon;
+  document.getElementById('popupTitle').textContent = data.title;
+  document.getElementById('popupBody').innerHTML = data.body;
+  document.getElementById('popupFooter').innerHTML = data.footer;
+  document.getElementById('popupOverlay').classList.add('active');
+  document.getElementById('infoPopup').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('active');
+  document.getElementById('infoPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePopup();
+});
+
+// ══════════════════════════════════════════════════
+// EVENT FILTERING
+// ══════════════════════════════════════════════════
+function filterEvents(category) {
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  event.target.classList.add('active');
+
+  document.querySelectorAll('.event-card-enhanced').forEach(function(card) {
+    if (category === 'all') {
+      card.style.display = '';
+    } else {
+      var cats = card.getAttribute('data-category') || '';
+      card.style.display = cats.includes(category) ? '' : 'none';
+    }
+  });
+}
+</script>
 
 </body>
 </html>
