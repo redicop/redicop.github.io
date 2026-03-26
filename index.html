@@ -7,91 +7,206 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .live-ticker{background:rgba(16,185,129,.08);border-top:1px solid rgba(16,185,129,.15);border-bottom:1px solid rgba(16,185,129,.15);padding:10px 0;overflow:hidden;white-space:nowrap}
+    .ticker-wrap{display:inline-block;animation:ticker 60s linear infinite}
+    .ticker-item{display:inline-block;padding:0 2rem;font-size:.85rem;color:var(--accent-emerald)}
+    .ticker-item a{color:var(--accent-emerald);text-decoration:none}
+    .ticker-item .ticker-badge{background:rgba(16,185,129,.2);padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:700;text-transform:uppercase;margin-right:6px;letter-spacing:.5px}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .quick-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+    .qa-btn{display:flex;align-items:center;gap:12px;padding:1rem 1.25rem;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius);text-decoration:none;color:var(--text-primary);transition:all var(--transition);font-weight:600;font-size:.9rem}
+    .qa-btn:hover{border-color:rgba(59,130,246,.2);transform:translateY(-2px);background:var(--bg-card-hover);color:var(--text-primary)}
+    .qa-btn .qa-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .qa-icon.blue{background:var(--accent-glow)}
+    .qa-icon.green{background:rgba(16,185,129,.12)}
+    .qa-icon.amber{background:rgba(245,158,11,.12)}
+    .qa-icon.red{background:rgba(239,68,68,.12)}
+    .qa-icon.purple{background:rgba(168,85,247,.12)}
+    .live-feed{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-top:2rem}
+    .feed-main{display:grid;gap:1rem}
+    .feed-item{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius);padding:1.25rem;transition:all var(--transition)}
+    .feed-item:hover{border-color:rgba(59,130,246,.15)}
+    .feed-item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+    .feed-source{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:4px}
+    .feed-source.nasa{background:rgba(59,130,246,.12);color:var(--accent-bright)}
+    .feed-source.esa{background:rgba(6,182,212,.12);color:var(--accent-teal)}
+    .feed-source.noaa{background:rgba(16,185,129,.12);color:var(--accent-emerald)}
+    .feed-source.usgs{background:rgba(245,158,11,.12);color:var(--warning)}
+    .feed-source.alert{background:rgba(239,68,68,.12);color:var(--danger)}
+    .feed-time{font-size:.75rem;color:var(--text-muted)}
+    .feed-item h4{font-size:1rem;color:var(--text-heading);margin-bottom:.35rem;line-height:1.4}
+    .feed-item h4 a{color:inherit;text-decoration:none}
+    .feed-item h4 a:hover{color:var(--accent-bright)}
+    .feed-item p{font-size:.88rem;color:var(--text-secondary);line-height:1.6}
+    .feed-sidebar{display:grid;gap:1rem;align-content:start}
+    .sidebar-card{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius);padding:1.25rem}
+    .sidebar-card h4{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:1rem}
+    .alert-item{display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--border-glass)}
+    .alert-item:last-child{border-bottom:none;padding-bottom:0}
+    .alert-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px}
+    .alert-dot.active{background:var(--accent-emerald);box-shadow:0 0 8px rgba(16,185,129,.4)}
+    .alert-dot.pending{background:var(--warning)}
+    .alert-dot.critical{background:var(--danger);box-shadow:0 0 8px rgba(239,68,68,.4)}
+    .alert-text{font-size:.85rem;color:var(--text-secondary);line-height:1.5}
+    .alert-text strong{color:var(--text-heading);font-weight:600}
+    .alert-text .alert-time{display:block;font-size:.7rem;color:var(--text-muted);margin-top:2px}
+    .powered-badge{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;color:var(--text-muted);margin-top:.75rem;padding:4px 10px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:100px}
+    .powered-badge a{color:var(--accent-bright);font-weight:600}
+    .data-alerts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+    .data-alert-card{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;transition:all var(--transition);position:relative;overflow:hidden}
+    .data-alert-card:hover{border-color:rgba(59,130,246,.15);transform:translateY(-3px)}
+    .data-alert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-teal));opacity:0;transition:opacity var(--transition)}
+    .data-alert-card:hover::before{opacity:1}
+    .dac-icon{width:48px;height:48px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem}
+    .dac-count{display:flex;align-items:baseline;gap:.5rem;margin:.75rem 0}
+    .dac-count .count{font-size:1.5rem;font-weight:800;color:var(--accent-bright);font-family:var(--font-mono)}
+    .dac-count .count-label{font-size:.8rem;color:var(--text-muted)}
+    .data-alert-card h3{font-size:1.1rem;color:var(--text-heading);margin-bottom:.4rem}
+    .data-alert-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem}
+    .dac-subscribe{display:inline-flex;align-items:center;gap:6px;padding:.5rem 1rem;background:var(--accent-glow);border:1px solid rgba(59,130,246,.2);border-radius:var(--radius-sm);color:var(--accent-bright);font-size:.8rem;font-weight:600;text-decoration:none;transition:all var(--transition);cursor:pointer}
+    .dac-subscribe:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .community-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+    .community-card{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;transition:all var(--transition)}
+    .community-card:hover{border-color:rgba(59,130,246,.15);transform:translateY(-3px)}
+    .community-card h3{font-size:1.15rem;color:var(--text-heading);margin-bottom:.75rem}
+    .community-card p{font-size:.92rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem}
+    .nltgis-embed{background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(6,182,212,.05));border:1px solid rgba(37,99,235,.15);border-radius:var(--radius-lg);padding:3rem;text-align:center;position:relative;overflow:hidden}
+    .nltgis-embed::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.02) 1px,transparent 1px);background-size:30px 30px}
+    .nltgis-embed h3{font-size:1.5rem;margin-bottom:.5rem;color:var(--text-heading);position:relative}
+    .nltgis-embed p{color:var(--text-secondary);margin-bottom:1.5rem;position:relative;max-width:600px;margin-left:auto;margin-right:auto}
+    .nltgis-search{display:flex;max-width:600px;margin:0 auto 1rem;position:relative}
+    .nltgis-search input{flex:1;padding:14px 20px;background:rgba(10,14,26,.6);border:1px solid var(--border-glass);border-radius:var(--radius-sm) 0 0 var(--radius-sm);color:var(--text-primary);font-size:15px;font-family:var(--font-sans);outline:none;transition:border-color var(--transition)}
+    .nltgis-search input:focus{border-color:var(--accent)}
+    .nltgis-search input::placeholder{color:var(--text-muted)}
+    .nltgis-search button{padding:14px 24px;background:var(--accent);color:#fff;border:none;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-weight:600;cursor:pointer;font-size:14px;font-family:var(--font-sans);transition:background var(--transition)}
+    .nltgis-search button:hover{background:var(--accent-bright)}
+    .nltgis-prompts{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;position:relative}
+    .nltgis-prompt{padding:6px 14px;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:100px;font-size:.8rem;color:var(--text-secondary);cursor:pointer;transition:all var(--transition);text-decoration:none}
+    .nltgis-prompt:hover{border-color:var(--accent);color:var(--accent-bright)}
+    @media(max-width:900px){.live-feed{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
 
   <nav class="site-nav">
-    <a href="index.html" class="nav-brand">
-      <div class="brand-icon">RC</div>
-      <div class="brand-text">REDI<span>COP</span></div>
-    </a>
+    <a href="index.html" class="nav-brand"><div class="brand-icon">RC</div><div class="brand-text">REDI<span>COP</span></div></a>
     <div class="nav-links">
       <a href="index.html" class="active">Home</a>
       <a href="data-sources.html">Data Sources</a>
       <a href="news.html">News Feed</a>
+      <a href="alerts.html">Alerts</a>
       <a href="events.html">Events</a>
       <a href="resources.html">Resources</a>
       <a href="signup.html" class="nav-cta">Join Community &rarr;</a>
     </div>
   </nav>
 
-  <section class="hero">
+  <section class="hero" style="min-height:auto;padding:120px 24px 40px">
     <div class="hero-content">
       <div class="hero-badge"><span class="pulse"></span> Open Community for Disaster Remote Sensing</div>
       <h1>Remote Sensing in Disasters Community of Practice</h1>
-      <p class="hero-sub">Bridging the gap between remote sensing research and emergency management operations. Your gateway to satellite imagery, SAR, LiDAR, and geospatial data for disaster response.</p>
-      <div class="hero-actions">
-        <a href="data-sources.html" class="btn btn-primary">Explore Data Sources &rarr;</a>
-        <a href="signup.html" class="btn btn-outline">Join the Community</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><div class="stat-value">75+</div><div class="stat-label">Data Sources</div></div>
-        <div class="stat"><div class="stat-value">200+</div><div class="stat-label">Members</div></div>
-        <div class="stat"><div class="stat-value">50+</div><div class="stat-label">Organizations</div></div>
-        <div class="stat"><div class="stat-value">6</div><div class="stat-label">Categories</div></div>
+      <p class="hero-sub">Your hub for satellite imagery, SAR, LiDAR, aerial, and drone data for disaster response. Live feeds, data alerts, and community collaboration &mdash; powered by <a href="https://nltgis.ai" target="_blank" style="color:var(--accent-bright)">nltGIS.ai</a>.</p>
+      <div class="quick-actions" style="max-width:900px;margin:2rem auto 0">
+        <a href="data-sources.html" class="qa-btn"><div class="qa-icon blue">&#128752;</div>75+ Data Sources</a>
+        <a href="alerts.html" class="qa-btn"><div class="qa-icon red">&#128680;</div>Data Alerts</a>
+        <a href="news.html" class="qa-btn"><div class="qa-icon green">&#128240;</div>Live News Feed</a>
+        <a href="signup.html" class="qa-btn"><div class="qa-icon purple">&#128101;</div>Join Community</a>
       </div>
     </div>
   </section>
 
-  <section class="container">
-    <div class="section-header">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Focus Areas</h2>
-      <p class="section-desc">REDICOP advances remote sensing applications across the full disaster lifecycle.</p>
+  <div class="live-ticker">
+    <div class="ticker-wrap" id="tickerWrap">
+      <span class="ticker-item"><span class="ticker-badge">Live</span> NASA Earthdata: 12,000+ datasets available via cloud-optimized access</span>
+      <span class="ticker-item"><span class="ticker-badge">SAR</span> Sentinel-1C providing 6-day repeat InSAR coverage globally</span>
+      <span class="ticker-item"><span class="ticker-badge">Launch</span> NISAR delivering first L-band &amp; S-band SAR data products</span>
+      <span class="ticker-item"><span class="ticker-badge">LiDAR</span> USGS 3DEP: National elevation data updated with new acquisitions</span>
+      <span class="ticker-item"><span class="ticker-badge">Alert</span> Disasters Charter: Active monitoring for cyclone response in Pacific</span>
+      <span class="ticker-item"><span class="ticker-badge">Aerial</span> NOAA NGS emergency aerial imagery available post-disaster</span>
+      <span class="ticker-item"><span class="ticker-badge">Live</span> NASA Earthdata: 12,000+ datasets available via cloud-optimized access</span>
+      <span class="ticker-item"><span class="ticker-badge">SAR</span> Sentinel-1C providing 6-day repeat InSAR coverage globally</span>
+      <span class="ticker-item"><span class="ticker-badge">Launch</span> NISAR delivering first L-band &amp; S-band SAR data products</span>
+      <span class="ticker-item"><span class="ticker-badge">LiDAR</span> USGS 3DEP: National elevation data updated with new acquisitions</span>
+      <span class="ticker-item"><span class="ticker-badge">Alert</span> Disasters Charter: Active monitoring for cyclone response in Pacific</span>
+      <span class="ticker-item"><span class="ticker-badge">Aerial</span> NOAA NGS emergency aerial imagery available post-disaster</span>
     </div>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">&#128752;</div>
-        <h3>Satellite Imagery &amp; SAR</h3>
-        <p>Optical, SAR, and multispectral satellite data from NASA, NOAA, USGS, ESA, JAXA, and commercial providers for rapid damage assessment.</p>
+  </div>
+
+  <section class="container" style="padding:60px 24px">
+    <div class="section-header" style="margin-bottom:1.5rem;text-align:left"><div class="section-label">Live Dashboard</div><h2 class="section-title" style="font-size:1.8rem">Community Feed</h2></div>
+    <div class="live-feed">
+      <div class="feed-main" id="newsFeed">
+        <div class="feed-item"><div class="feed-item-header"><span class="feed-source nasa">NASA</span><span class="feed-time">Today</span></div><h4><a href="https://earthobservatory.nasa.gov/" target="_blank">Earth Observatory: New imagery captures volcanic activity in Indonesia</a></h4><p>High-resolution satellite data reveals thermal anomalies and SO2 plumes, supporting evacuation planning and hazard zone mapping.</p></div>
+        <div class="feed-item"><div class="feed-item-header"><span class="feed-source esa">ESA</span><span class="feed-time">Today</span></div><h4><a href="https://www.esa.int/Applications/Observing_the_Earth/Copernicus" target="_blank">Copernicus EMS activates rapid mapping for flooding in South Asia</a></h4><p>Sentinel-1 SAR and Sentinel-2 optical imagery tasked for damage assessment across affected provinces.</p></div>
+        <div class="feed-item"><div class="feed-item-header"><span class="feed-source noaa">NOAA</span><span class="feed-time">Yesterday</span></div><h4><a href="https://www.nesdis.noaa.gov/" target="_blank">GOES-18 captures severe weather system developing in Gulf of Mexico</a></h4><p>Mesoscale imagery at 1-minute intervals providing critical data for NWS forecasters and emergency managers.</p></div>
+        <div class="feed-item"><div class="feed-item-header"><span class="feed-source usgs">USGS</span><span class="feed-time">Yesterday</span></div><h4><a href="https://www.usgs.gov/landsat-missions" target="_blank">New Landsat 9 Collection 2 data released for disaster-affected regions</a></h4><p>30m multispectral imagery with improved atmospheric correction for pre/post-event change detection analysis.</p></div>
+        <div class="feed-item"><div class="feed-item-header"><span class="feed-source alert">Emergency</span><span class="feed-time">2 days ago</span></div><h4><a href="https://disasterscharter.org" target="_blank">International Charter activated for earthquake response in Central Asia</a></h4><p>Multiple satellite operators tasked including Maxar, Planet, Airbus, and JAXA for building damage assessment.</p></div>
       </div>
-      <div class="card">
-        <div class="card-icon">&#9889;</div>
-        <h3>Rapid Response Workflows</h3>
-        <p>Standardized workflows and guidelines enabling emergency managers to quickly task, acquire, and interpret remote sensing data during active events.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#128202;</div>
-        <h3>AI &amp; Geospatial Innovation</h3>
-        <p>Machine learning, computer vision, and cloud computing for automated damage detection, flood mapping, wildfire monitoring, and change analysis.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#127758;</div>
-        <h3>LiDAR &amp; Elevation Data</h3>
-        <p>3D point cloud and elevation datasets from USGS 3DEP, NOAA, and national labs for terrain modeling, flood risk, and structural damage assessment.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#128225;</div>
-        <h3>Data Source Index</h3>
-        <p>Comprehensive catalog of 75+ federal, national lab, regional, and global remote sensing data sources with direct links, descriptions, and use cases.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">&#128240;</div>
-        <h3>News &amp; Launches</h3>
-        <p>Live feed of the latest in remote sensing: satellite launches, new data products, agency updates, and community developments.</p>
+      <div class="feed-sidebar">
+        <div class="sidebar-card">
+          <h4>&#128680; Active Alerts</h4>
+          <div class="alert-item"><div class="alert-dot critical"></div><div class="alert-text"><strong>Charter Activation #876</strong> Earthquake M6.2 &mdash; Central Asia<span class="alert-time">SAR &amp; optical imagery being collected</span></div></div>
+          <div class="alert-item"><div class="alert-dot active"></div><div class="alert-text"><strong>GOES-18 Mesoscale</strong> Gulf storm tracking active<span class="alert-time">1-min interval imagery</span></div></div>
+          <div class="alert-item"><div class="alert-dot active"></div><div class="alert-text"><strong>Sentinel-1 Pass</strong> Next acquisition over eastern US<span class="alert-time">Descending orbit &mdash; 6:14 AM ET</span></div></div>
+          <div class="alert-item"><div class="alert-dot pending"></div><div class="alert-text"><strong>NISAR Data Release</strong> New InSAR products available<span class="alert-time">L-band deformation maps posted</span></div></div>
+          <a href="alerts.html" style="display:block;text-align:center;margin-top:1rem;font-size:.85rem;font-weight:600;color:var(--accent-bright)">View All Alerts &amp; Subscribe &rarr;</a>
+          <div class="powered-badge">Alerts powered by <a href="https://nltgis.ai" target="_blank">nltGIS.ai</a></div>
+        </div>
+        <div class="sidebar-card">
+          <h4>&#128101; Community Activity</h4>
+          <div class="alert-item"><div class="alert-dot active"></div><div class="alert-text"><strong>200+ members</strong> from 50+ organizations<span class="alert-time">Growing weekly</span></div></div>
+          <div class="alert-item"><div class="alert-dot active"></div><div class="alert-text"><strong>Next meeting:</strong> July 10, 2025<span class="alert-time">Hurricane season preparation</span></div></div>
+          <div class="alert-item"><div class="alert-dot pending"></div><div class="alert-text"><strong>New data source added</strong><span class="alert-time">JAXA ALOS-2 PALSAR-2 archive</span></div></div>
+          <a href="signup.html" style="display:block;text-align:center;margin-top:1rem;font-size:.85rem;font-weight:600;color:var(--accent-bright)">Join the Community &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="about-section">
+  <section class="about-section" style="padding:80px 0">
+    <div class="container">
+      <div class="section-header"><div class="section-label">Data Alerts</div><h2 class="section-title">Subscribe to Data Availability Alerts</h2><p class="section-desc">Get notified when new satellite, aerial, or drone data becomes available for your area of interest. Powered by <a href="https://nltgis.ai" target="_blank" style="color:var(--accent-bright)">nltGIS.ai</a> spatial intelligence.</p></div>
+      <div class="data-alerts-grid">
+        <div class="data-alert-card"><div class="dac-icon" style="background:var(--accent-glow)">&#128752;</div><h3>Satellite Optical Imagery</h3><div class="dac-count"><span class="count">15+</span><span class="count-label">providers tracked</span></div><p>Landsat, Sentinel-2, MODIS, VIIRS, Planet, Maxar, Airbus &mdash; alerts for new acquisitions over your AOI.</p><a href="alerts.html" class="dac-subscribe">&#128276; Subscribe to Alerts</a></div>
+        <div class="data-alert-card"><div class="dac-icon" style="background:rgba(16,185,129,.12)">&#128225;</div><h3>SAR &amp; InSAR Data</h3><div class="dac-count"><span class="count">8+</span><span class="count-label">SAR missions</span></div><p>Sentinel-1, NISAR, ALOS-2 PALSAR, RADARSAT, TerraSAR-X, Capella, ICEYE &mdash; coherence and deformation alerts.</p><a href="alerts.html" class="dac-subscribe">&#128276; Subscribe to Alerts</a></div>
+        <div class="data-alert-card"><div class="dac-icon" style="background:rgba(245,158,11,.12)">&#127758;</div><h3>LiDAR &amp; Elevation</h3><div class="dac-count"><span class="count">5+</span><span class="count-label">data programs</span></div><p>USGS 3DEP, NOAA Digital Coast, ICESat-2, GEDI &mdash; new point cloud and DEM data releases.</p><a href="alerts.html" class="dac-subscribe">&#128276; Subscribe to Alerts</a></div>
+        <div class="data-alert-card"><div class="dac-icon" style="background:rgba(168,85,247,.12)">&#9992;&#65039;</div><h3>Aerial &amp; Drone Data</h3><div class="dac-count"><span class="count">10+</span><span class="count-label">sources monitored</span></div><p>NOAA NGS emergency aerial, Civil Air Patrol, FEMA CAP, sUAS/drone damage surveys &mdash; post-disaster releases.</p><a href="alerts.html" class="dac-subscribe">&#128276; Subscribe to Alerts</a></div>
+        <div class="data-alert-card"><div class="dac-icon" style="background:rgba(239,68,68,.12)">&#128680;</div><h3>Emergency Activations</h3><div class="dac-count"><span class="count">24/7</span><span class="count-label">monitoring</span></div><p>International Disasters Charter, Copernicus EMS, FEMA activations &mdash; immediate alerts when imagery is tasked.</p><a href="alerts.html" class="dac-subscribe">&#128276; Subscribe to Alerts</a></div>
+        <div class="data-alert-card"><div class="dac-icon" style="background:rgba(6,182,212,.12)">&#127777;&#65039;</div><h3>Weather &amp; Climate</h3><div class="dac-count"><span class="count">Real-time</span><span class="count-label">feeds</span></div><p>GOES, JPSS, Himawari, Meteosat &mdash; severe weather alerts, tropical cyclone tracking, fire weather monitoring.</p><a href="alerts.html" class="dac-subscribe">&#128276; Subscribe to Alerts</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding:80px 24px">
+    <div class="nltgis-embed">
+      <div class="section-label" style="position:relative">Spatial Intelligence</div>
+      <h3>Ask the Earth a Question</h3>
+      <p>Query 200+ authoritative datasets instantly. Flood risk, population density, wildfire hazards, earthquake history &mdash; powered by nltGIS.ai.</p>
+      <div class="nltgis-search">
+        <input type="text" placeholder="e.g., Show flood risk in Houston, TX..." id="nltgisQuery">
+        <button onclick="window.open('https://nltgis.ai/?q='+encodeURIComponent(document.getElementById(String.fromCharCode(110,108,116,103,105,115,81,117,101,114,121)).value||'flood risk'),'_blank')">Ask</button>
+      </div>
+      <div class="nltgis-prompts">
+        <a href="https://nltgis.ai/?q=flood+risk+in+Miami" target="_blank" class="nltgis-prompt">Flood risk in Miami</a>
+        <a href="https://nltgis.ai/?q=wildfire+hazard+California" target="_blank" class="nltgis-prompt">Wildfire hazard California</a>
+        <a href="https://nltgis.ai/?q=earthquake+risk+Seattle" target="_blank" class="nltgis-prompt">Earthquake risk Seattle</a>
+        <a href="https://nltgis.ai/?q=hurricane+evacuation+zones+Houston" target="_blank" class="nltgis-prompt">Hurricane zones Houston</a>
+        <a href="https://nltgis.ai/?q=population+density+Puerto+Rico" target="_blank" class="nltgis-prompt">Population Puerto Rico</a>
+      </div>
+      <div class="powered-badge" style="margin-top:1.25rem;display:inline-flex">Powered by <a href="https://nltgis.ai" target="_blank">nltGIS.ai</a> &mdash; 200+ authoritative datasets</div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section" style="padding:80px 0">
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
           <div class="section-label">About</div>
           <h2>What is REDICOP?</h2>
-          <p>The Remote Sensing in Disasters Community of Practice (REDICOP), formerly known as the Remote Sensing Innovation Working Group (RSIWG), is co-organized by <a href="https://www.ll.mit.edu/" target="_blank" class="inline-link">MIT Lincoln Laboratory</a> and <a href="https://newlighttechnologies.com/" target="_blank" class="inline-link">New Light Technologies</a>.</p>
-          <p>REDICOP seeks to optimize the application of remote sensing advancements in the emergency management community, acting as a bridge between theoretical and applied research, and operational implementation.</p>
-          <p>With partners from Federal, State, and local agencies, public sector research groups, NGOs, academia, and the private sector, the initiative builds a collaborative platform to advance remote sensing technologies in disaster management.</p>
+          <p>The Remote Sensing in Disasters Community of Practice (REDICOP), formerly the Remote Sensing Innovation Working Group (RSIWG), is co-organized by <a href="https://www.ll.mit.edu/" target="_blank" class="inline-link">MIT Lincoln Laboratory</a> and <a href="https://newlighttechnologies.com/" target="_blank" class="inline-link">New Light Technologies</a>.</p>
+          <p>REDICOP bridges remote sensing research and emergency management operations. We curate data sources, share best practices, host community meetings, and provide real-time awareness of satellite, aerial, and drone data availability for disaster response.</p>
+          <p>Our platform leverages <a href="https://nltgis.ai" target="_blank" class="inline-link">nltGIS.ai</a> spatial intelligence to deliver data alerts, geospatial queries, and community tools.</p>
         </div>
         <div class="about-visual">
           <div class="section-label" style="margin-bottom:24px">Co-Organizers</div>
@@ -100,80 +215,41 @@
             <a href="https://www.ll.mit.edu/" target="_blank" class="partner-item"><strong>MIT LL</strong><span>Lincoln Laboratory</span></a>
           </div>
           <div style="margin-top:24px">
-            <div class="section-label" style="margin-bottom:16px;font-size:11px">Technology Platform</div>
-            <a href="https://nltgis.ai" target="_blank" class="partner-item" style="display:block;max-width:200px"><strong>nltGIS.ai</strong><span>Spatial Intelligence</span></a>
+            <div class="section-label" style="margin-bottom:16px;font-size:11px">Powered By</div>
+            <a href="https://nltgis.ai" target="_blank" class="partner-item" style="display:block;max-width:220px"><strong>nltGIS.ai</strong><span>AI-Native Spatial Intelligence</span></a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="events-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Quick Links</div>
-        <h2 class="section-title">Explore the Community</h2>
-      </div>
-      <div class="card-grid">
-        <a href="data-sources.html" class="card" style="text-decoration:none">
-          <div class="card-icon">&#128225;</div>
-          <h3>Data Sources for Remote Sensing</h3>
-          <p>75+ indexed sources: US Federal satellite imagery, SAR, LiDAR, national labs, regional, and global datasets with direct access links.</p>
-        </a>
-        <a href="news.html" class="card" style="text-decoration:none">
-          <div class="card-icon">&#128240;</div>
-          <h3>News &amp; Satellite Launches</h3>
-          <p>Latest developments in remote sensing: NISAR launch, Sentinel-4, Landsat Next, SWFO-L1, and more from NASA, ESA, NOAA, and JAXA.</p>
-        </a>
-        <a href="signup.html" class="card" style="text-decoration:none">
-          <div class="card-icon">&#128101;</div>
-          <h3>Join the Community</h3>
-          <p>Sign up via GitHub to receive updates, contribute resources, and connect with the remote sensing disaster response community.</p>
-        </a>
-      </div>
+  <section class="container" style="padding:0 24px 80px">
+    <div class="section-header"><div class="section-label">Get Involved</div><h2 class="section-title">Be Part of the Community</h2><p class="section-desc">Multiple ways to participate, contribute, and stay connected.</p></div>
+    <div class="community-grid">
+      <div class="community-card"><div class="card-icon">&#128172;</div><h3>Discuss &amp; Collaborate</h3><p>Join discussions on GitHub about data sources, analysis workflows, best practices, and disaster response coordination.</p><a href="https://github.com/redicop/redicop.github.io/discussions" target="_blank" class="btn btn-outline" style="padding:10px 20px;font-size:.85rem">Open Discussions &rarr;</a></div>
+      <div class="community-card"><div class="card-icon">&#128276;</div><h3>Subscribe to Alerts</h3><p>Get notified about new satellite imagery, SAR data, LiDAR releases, aerial surveys, and emergency activations in your area.</p><a href="alerts.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Set Up Alerts &rarr;</a></div>
+      <div class="community-card"><div class="card-icon">&#128197;</div><h3>Attend Meetings</h3><p>Quarterly virtual meetings with presentations from NASA, USGS, NOAA, academic researchers, and private sector experts.</p><a href="events.html" class="btn btn-outline" style="padding:10px 20px;font-size:.85rem">View Events &rarr;</a></div>
+      <div class="community-card"><div class="card-icon">&#128225;</div><h3>Contribute Data Sources</h3><p>Know a dataset we're missing? Submit a pull request or issue to add new remote sensing data sources to our index.</p><a href="https://github.com/redicop/redicop.github.io/issues/new" target="_blank" class="btn btn-outline" style="padding:10px 20px;font-size:.85rem">Suggest a Source &rarr;</a></div>
     </div>
   </section>
 
   <section class="cta-section">
     <div class="cta-box">
-      <h2>Join REDICOP</h2>
-      <p>Sign up through GitHub to receive community updates, contribute data sources, and participate in working groups.</p>
-      <div style="margin-top:24px"><a href="signup.html" class="btn btn-primary">Join via GitHub &rarr;</a></div>
+      <h2>Join REDICOP Today</h2>
+      <p>Free, open, and community-driven. Get data alerts, join discussions, and connect with 200+ remote sensing professionals.</p>
+      <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="signup.html" class="btn btn-primary">Join via GitHub &rarr;</a><a href="alerts.html" class="btn btn-outline">Set Up Data Alerts</a></div>
     </div>
   </section>
 
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="brand-text">REDI<span>COP</span></div>
-          <p>Remote Sensing in Disasters Community of Practice. Your gateway to disaster remote sensing data and community collaboration.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Community</h4>
-          <a href="index.html">Home</a>
-          <a href="data-sources.html">Data Sources</a>
-          <a href="news.html">News Feed</a>
-          <a href="events.html">Events</a>
-          <a href="resources.html">Resources</a>
-          <a href="signup.html">Join Community</a>
-        </div>
-        <div class="footer-col">
-          <h4>Co-Organizers</h4>
-          <a href="https://newlighttechnologies.com/" target="_blank">New Light Technologies</a>
-          <a href="https://www.ll.mit.edu/" target="_blank">MIT Lincoln Laboratory</a>
-          <a href="https://nltgis.ai" target="_blank">nltGIS.ai</a>
-        </div>
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <a href="https://github.com/redicop" target="_blank">GitHub</a>
-          <a href="mailto:info@redicop.org">Email Us</a>
-        </div>
+        <div class="footer-brand"><div class="brand-text">REDI<span>COP</span></div><p>Remote Sensing in Disasters Community of Practice. Your gateway to disaster remote sensing data and community collaboration.</p><div class="powered-badge" style="margin-top:1rem">Powered by <a href="https://nltgis.ai" target="_blank">nltGIS.ai</a></div></div>
+        <div class="footer-col"><h4>Community</h4><a href="index.html">Home</a><a href="data-sources.html">Data Sources</a><a href="news.html">News Feed</a><a href="alerts.html">Data Alerts</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a href="signup.html">Join Community</a></div>
+        <div class="footer-col"><h4>Co-Organizers</h4><a href="https://newlighttechnologies.com/" target="_blank">New Light Technologies</a><a href="https://www.ll.mit.edu/" target="_blank">MIT Lincoln Laboratory</a><a href="https://nltgis.ai" target="_blank">nltGIS.ai</a></div>
+        <div class="footer-col"><h4>Connect</h4><a href="https://github.com/redicop" target="_blank">GitHub</a><a href="mailto:info@redicop.org">Email Us</a></div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span>
-        <div class="footer-badges"><span class="footer-badge">Open Community</span></div>
-      </div>
+      <div class="footer-bottom"><span>&copy; 2025 REDICOP. Co-organized by MIT Lincoln Laboratory and New Light Technologies.</span><div class="footer-badges"><span class="footer-badge">Open Community</span></div></div>
     </div>
   </footer>
 
