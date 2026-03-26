@@ -756,7 +756,7 @@ const popupData = {
     footer: '<a href="https://www.iaem.org/Events/EM-Events" target="_blank" class="btn btn-primary">IAEM Events &#8599;</a><span class="popup-source">Source: IAEM</span>'
   },
   'igarss-2026': {
-    icon: '&#128752;', title: 'IGARSS 2026 &mdash; Washington, D.C.',
+    icon: '&#128752;', title: 'IGARSS 2026 \u2014 Washington, D.C.',
     body: '<p>The IEEE International Geoscience and Remote Sensing Symposium (IGARSS) is THE premier annual conference for remote sensing science and technology. Organized by the IEEE Geoscience and Remote Sensing Society (GRSS), IGARSS 2026 returns to Washington, D.C.</p><p>The technical program covers: Synthetic Aperture Radar (SAR) and InSAR processing; hyperspectral image analysis; LiDAR point cloud processing; microwave radiometry; AI/ML for Earth observation; disaster monitoring and response; land use/land cover mapping; ocean and atmospheric remote sensing; and sensor calibration/validation.</p><p>Agency sessions from NASA, ESA, JAXA, CSA, DLR, and CNES provide updates on current and planned missions. Industry sessions cover commercial SAR, optical, and hyperspectral constellations.</p><p>Paper submission deadline typically in January 2026. Student paper competition and travel grants available.</p><div class="popup-meta"><span class="popup-tag">IEEE GRSS</span><span class="popup-tag">&#128205; Washington, D.C.</span><span class="popup-tag">3,000+ Attendees</span><span class="popup-tag">Premier RS Conference</span></div>',
     footer: '<a href="https://2026.ieeeigarss.org" target="_blank" class="btn btn-primary">IGARSS 2026 &#8599;</a><a href="https://www.grss-ieee.org" target="_blank" class="btn btn-outline">IEEE GRSS &#8599;</a><span class="popup-source">Source: IEEE GRSS</span>'
   },
@@ -814,7 +814,7 @@ function showPopup(id) {
   const data = popupData[id];
   if (!data) return;
   document.getElementById('popupIcon').innerHTML = data.icon;
-  document.getElementById('popupTitle').textContent = data.title;
+  document.getElementById('popupTitle').innerHTML = data.title;
   document.getElementById('popupBody').innerHTML = data.body;
   document.getElementById('popupFooter').innerHTML = data.footer;
   document.getElementById('popupOverlay').classList.add('active');
